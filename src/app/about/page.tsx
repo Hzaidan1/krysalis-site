@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import ReactiveBackground from "@/components/ReactiveBackground";
 
-const FRAMES = [0.5, 3.5, 6.5, 10, 12];
+// Loop bounds in bg-prep.mp4 — plays continuously between these two points,
+// no holds (swap for your own in/out points anytime).
+const FRAMES = [0.5, 12];
 
 const PHILOSOPHY = [
   "Atmosphere",
@@ -50,21 +51,11 @@ const itemVariants = {
 };
 
 export default function AboutPage() {
-  const [bgIndex, setBgIndex] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setBgIndex((i) => (i + 1) % FRAMES.length);
-    }, 4500);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <main className="min-h-screen w-full flex justify-center px-6 md:px-10 pt-36 pb-32">
       <ReactiveBackground
         src="/videos/bg-prep.mp4"
         frames={FRAMES}
-        activeIndex={bgIndex}
         grayscale
         speed={1}
       />

@@ -5,43 +5,38 @@ import { useEffect, useRef, useState } from "react";
 export default function ReactiveBackground({
   src,
   frames,
-  activeIndex,
+  activeIndex = 0,
   opacity = 0.4,
   grayscale = true,
   speed = 4,
 }: {
   src: string;
-  /** curated timestamps (seconds) — one per step/beat, chosen for visual quality */
+  /** curated timestamps (seconds). In curated mode (speed > 1) these are
+   * jump-to-and-hold points. In continuous mode (speed <= 1) only the
+   * first and last values matter — they're the loop's start/end bounds. */
   frames: number[];
-  /** which frame index should be showing right now — drives playback */
-  activeIndex: number;
+  /** which frame index should be showing right now. Only used in curated
+   * mode — ignored entirely in continuous mode, which loops on its own. */
+  activeIndex?: number;
   opacity?: number;
   grayscale?: boolean;
-  /** playback speed used to close the gap between frames. 1 = original,
-   * real-time speed (no fast-forward) — use this for backgrounds that
-   * auto-advance on their own, where a sped-up jump reads as unnatural.
-   * Higher values (the default) fast-forward through the gap, which suits
-   * backgrounds tied to a deliberate user action (e.g. clicking Next). */
+  /** 1 (or less) = continuous mode: plays start\u2192end in a real, uninterrupted
+   * loop with no holds or pauses \u2014 use this for backgrounds that just need
+   * to feel alive with no external trigger. Greater than 1 = curated mode:
+   * fast-forwards to whichever frame `activeIndex` points at, then holds
+   * there until `activeIndex` changes again \u2014 use this when playback should
+   * be tied to a deliberate action (e.g. clicking Next on a form). */
   speed?: number;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  // null = "not yet initialized", distinct from 0 so the very first frame
-  // doesn't get skipped or mixed up with "no change happened".
-  const prevIndexRef = useRef<number | null>(null);
-  // Tracks the in-flight "timeupdate" handler (if any) so a new transition
-  // can remove the previous one before attaching its own. Without this, two
-  // rapid activeIndex changes (e.g. double-clicking Next) each attach their
-  // own listener; whichever target the video reaches FIRST wins and pauses
-  // playback, permanently stranding the second listener on a stopped video.
-  const activeListenerRef = useRef<(() => void) | null>(null);
-  // If the browser blocks an automatic play() call (happens on some
-  // browsers even for muted video, especially the very first attempt with
-  // zero prior page interaction), this ensures playback resumes as soon as
-  // the user interacts with the page ANYWHERE — not just by clicking the
-  // video itself — instead of silently staying stuck forever.
-  const resumePendingRef = useRef(false);
-  const [transitioning, setTransitioning] = useState(false);
+  const continuous = speed <= 1;
 
+  // --- shared: recover from a blocked autoplay attempt ---
+  // Some browsers block an automatic play() call even for muted video,
+  // especially the very first attempt with zero prior page interaction.
+  // This resumes playback the moment the user interacts with the page
+  // ANYWHERE, instead of silently staying stuck forever.
+  const resumePendingRef = useRef(false);
   function attemptPlay(video: HTMLVideoElement) {
     video.play().catch(() => {
       if (resumePendingRef.current) return;
@@ -56,10 +51,60 @@ export default function ReactiveBackground({
     });
   }
 
-  // Set the opening frame as soon as the video has metadata — with a
-  // one-time listener so this can never be silently missed if metadata
-  // loads slightly after this effect runs.
+  // ---------------- Continuous mode ----------------
+  // Plays from frames[0] to the last frame value on a real, uninterrupted
+  // loop \u2014 no holds, no pauses, no fast-forwarding.
   useEffect(() => {
+    if (!continuous) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    const start = frames[0] ?? 0;
+    const end = frames[frames.length - 1] ?? start;
+
+    function begin() {
+      if (!video) return;
+      video.currentTime = start;
+      video.playbackRate = 1;
+      attemptPlay(video);
+    }
+
+    function onTimeUpdate() {
+      if (!video) return;
+      if (video.currentTime >= end) {
+        // loop back without ever pausing
+        video.currentTime = start;
+      }
+    }
+
+    if (video.readyState >= 1) {
+      begin();
+    } else {
+      video.addEventListener("loadedmetadata", begin, { once: true });
+    }
+    video.addEventListener("timeupdate", onTimeUpdate);
+    return () => {
+      video.removeEventListener("loadedmetadata", begin);
+      video.removeEventListener("timeupdate", onTimeUpdate);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [continuous, src]);
+
+  // ---------------- Curated mode ----------------
+  // null = "not yet initialized", distinct from 0 so the very first frame
+  // doesn't get skipped or mixed up with "no change happened".
+  const prevIndexRef = useRef<number | null>(null);
+  // Tracks the in-flight "timeupdate" handler (if any) so a new transition
+  // can remove the previous one before attaching its own. Without this, two
+  // rapid activeIndex changes (e.g. double-clicking Next) each attach their
+  // own listener; whichever target the video reaches FIRST wins and pauses
+  // playback, permanently stranding the second listener on a stopped video.
+  const activeListenerRef = useRef<(() => void) | null>(null);
+  const [transitioning, setTransitioning] = useState(false);
+
+  // Set the opening frame as soon as the video has metadata.
+  useEffect(() => {
+    if (continuous) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -76,34 +121,28 @@ export default function ReactiveBackground({
       return () => video.removeEventListener("loadedmetadata", setInitial);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [src]);
+  }, [continuous, src]);
 
   // Whenever activeIndex changes, fast-forward to that frame's timestamp
-  // (not real-time — a big gap between frames would otherwise take
-  // several real seconds to resolve, which read as laggy) then hold there.
+  // then hold there, until the next change.
   useEffect(() => {
+    if (continuous) return;
     const video = videoRef.current;
     if (!video) return;
 
     const target = frames[activeIndex];
     if (target === undefined) return;
 
-    // First render, or nothing actually changed — nothing to do.
     if (prevIndexRef.current === activeIndex) return;
 
     const goingForward =
       prevIndexRef.current === null || activeIndex > prevIndexRef.current;
 
-    // Update immediately so a slow/late video load can never leave this
-    // permanently stuck comparing against a stale previous value.
     prevIndexRef.current = activeIndex;
 
     function run() {
       if (!video) return;
 
-      // A previous transition may still be in flight (user advanced again
-      // before it finished) — drop its listener so only the newest target
-      // can ever resolve the transition.
       if (activeListenerRef.current) {
         video.removeEventListener("timeupdate", activeListenerRef.current);
         activeListenerRef.current = null;
@@ -116,7 +155,7 @@ export default function ReactiveBackground({
       }
 
       setTransitioning(true);
-      video.playbackRate = speed; // close the gap at the requested speed — 1 = real-time, no fast-forward
+      video.playbackRate = speed;
 
       function onTimeUpdate() {
         if (!video) return;
@@ -131,8 +170,6 @@ export default function ReactiveBackground({
           }
           setTransitioning(false);
         } else if (speed > 1.6 && remaining < 0.6 && video.playbackRate > 1.6) {
-          // ease down as we approach the target instead of a hard stop
-          // (only relevant when actually fast-forwarding)
           video.playbackRate = 1.6;
         }
       }
@@ -146,7 +183,7 @@ export default function ReactiveBackground({
     } else {
       video.addEventListener("loadedmetadata", run, { once: true });
     }
-  }, [activeIndex, frames, speed]);
+  }, [continuous, activeIndex, frames, speed]);
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
