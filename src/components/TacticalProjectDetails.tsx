@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Project } from "@/lib/projects";
 
 // --- tuning ---
-const CHAR_INTERVAL_MS = 28; // typing speed, per character
-const FIELD_STAGGER_MS = 180; // delay before each subsequent field starts typing
+const CHAR_INTERVAL_MS = 52; // typing speed, per character — was 28 (too fast)
+const FIELD_STAGGER_MS = 220; // delay before each subsequent field starts typing
 
 type Field = { label: string; value: string };
 
@@ -45,18 +45,52 @@ function useTypingClick() {
     const ctx = ensureContext();
     if (!ctx) return;
     try {
+      const now = ctx.currentTime;
+
+      // --- layer 1: the sharp "snap" of the switch actuating ---
+      // A real mechanical click is a broadband transient, not a pure tone —
+      // synthesized here as a short burst of noise, decaying fast, shaped
+      // through a bandpass filter so it reads as a bright "tick" rather
+      // than static.
+      const noiseDuration = 0.018;
+      const bufferSize = Math.floor(ctx.sampleRate * noiseDuration);
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        const decay = Math.pow(1 - i / bufferSize, 2);
+        data[i] = (Math.random() * 2 - 1) * decay;
+      }
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const noiseFilter = ctx.createBiquadFilter();
+      noiseFilter.type = "bandpass";
+      noiseFilter.frequency.value = 2800 + Math.random() * 1400;
+      noiseFilter.Q.value = 1.1;
+
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.5, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + noiseDuration);
+
+      noise.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
+      noise.start(now);
+      noise.stop(now + noiseDuration);
+
+      // --- layer 2: the low "thock" of the keycap bottoming out ---
+      // arrives a few ms after the snap, same as a real switch
       const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      // small randomized pitch per click so a run of characters doesn't
-      // sound like a single repeated note
-      osc.type = "square";
-      osc.frequency.value = 900 + Math.random() * 500;
-      gain.gain.setValueAtTime(0.05, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.03);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.03);
+      osc.type = "sine";
+      osc.frequency.value = 120 + Math.random() * 50;
+      const oscGain = ctx.createGain();
+      const thockStart = now + 0.004;
+      oscGain.gain.setValueAtTime(0.09, thockStart);
+      oscGain.gain.exponentialRampToValueAtTime(0.0001, thockStart + 0.05);
+      osc.connect(oscGain);
+      oscGain.connect(ctx.destination);
+      osc.start(thockStart);
+      osc.stop(thockStart + 0.055);
     } catch {
       // audio is a nice-to-have — never let a failure here matter
     }
