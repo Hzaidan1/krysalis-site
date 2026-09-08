@@ -5,12 +5,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
-import ReactiveBackground from "@/components/ReactiveBackground";
+import StaticBackground from "@/components/StaticBackground";
 import { PROJECTS, type Project } from "@/lib/projects";
-
-// Loop bounds in bg-contact-film.mp4 — plays continuously from the first
-// value to the second and back, no holds (swap for your own in/out points).
-const BG_FRAMES = [0.5, 8];
 
 const CATEGORIES = ["All", "Films", "Events", "Product"] as const;
 type Category = (typeof CATEGORIES)[number];
@@ -28,12 +24,7 @@ export default function WorkPage() {
 
   return (
     <main className="min-h-screen w-full flex justify-center px-6 md:px-10 pt-36 pb-32">
-      <ReactiveBackground
-        src="/videos/bg-contact-film.mp4"
-        frames={BG_FRAMES}
-        grayscale={false}
-        speed={1}
-      />
+      <StaticBackground src="/images/work-bg-still.jpg" grayscale={false} />
       <div className="relative z-10 w-full max-w-5xl">
         <PageHeader
           kicker="Selected Work"

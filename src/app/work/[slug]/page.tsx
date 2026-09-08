@@ -36,19 +36,19 @@ export default async function ProjectPage({
       )}
 
       <div className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
-        <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-6xl mb-6">
+        <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-6xl mb-10">
           {project.title}
         </h1>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 pb-10 border-b border-[var(--color-border)] font-[family-name:var(--font-body)] text-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-8 mb-16 pb-10 border-b border-[var(--color-border)] font-[family-name:var(--font-body)] text-sm">
           <div>
-            <p className="text-[var(--color-earth-light)] uppercase text-xs tracking-[0.1em] mb-1">
+            <p className="font-[family-name:var(--font-tactical)] text-[var(--color-earth-light)] uppercase text-[11px] tracking-[0.16em] mb-3">
               Client
             </p>
             <p className="text-[var(--color-text-dim)]">{project.client}</p>
           </div>
           <div>
-            <p className="text-[var(--color-earth-light)] uppercase text-xs tracking-[0.1em] mb-1">
+            <p className="font-[family-name:var(--font-tactical)] text-[var(--color-earth-light)] uppercase text-[11px] tracking-[0.16em] mb-3">
               Year &amp; Location
             </p>
             <p className="text-[var(--color-text-dim)]">
@@ -56,13 +56,13 @@ export default async function ProjectPage({
             </p>
           </div>
           <div>
-            <p className="text-[var(--color-earth-light)] uppercase text-xs tracking-[0.1em] mb-1">
+            <p className="font-[family-name:var(--font-tactical)] text-[var(--color-earth-light)] uppercase text-[11px] tracking-[0.16em] mb-3">
               Category
             </p>
             <p className="text-[var(--color-text-dim)]">{project.category}</p>
           </div>
           <div>
-            <p className="text-[var(--color-earth-light)] uppercase text-xs tracking-[0.1em] mb-1">
+            <p className="font-[family-name:var(--font-tactical)] text-[var(--color-earth-light)] uppercase text-[11px] tracking-[0.16em] mb-3">
               My Role
             </p>
             <p className="text-[var(--color-text-dim)]">{project.role ?? "[Role]"}</p>

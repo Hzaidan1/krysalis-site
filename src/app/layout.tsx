@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Bebas_Neue } from "next/font/google";
+import { Inter, Bebas_Neue, Black_Ops_One } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -11,6 +11,12 @@ const inter = Inter({
 
 const bebas = Bebas_Neue({
   variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const blackOps = Black_Ops_One({
+  variable: "--font-black-ops",
   subsets: ["latin"],
   weight: "400",
 });
@@ -34,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${bebas.variable} antialiased`}>
+      <body className={`${inter.variable} ${bebas.variable} ${blackOps.variable} antialiased`}>
         <Nav />
         {children}
       </body>

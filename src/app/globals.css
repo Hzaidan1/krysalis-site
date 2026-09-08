@@ -3,6 +3,7 @@
 @theme {
   --font-display: var(--font-bebas);
   --font-body: var(--font-inter);
+  --font-tactical: var(--font-black-ops);
 
   --color-bg: #0a0a09;
   --color-bg-elevated: #141310;
