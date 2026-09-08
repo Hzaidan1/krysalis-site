@@ -3,6 +3,7 @@
 @theme {
   --font-display: var(--font-michroma);
   --font-body: var(--font-inter);
+  --font-tactical-mono: var(--font-share-tech-mono);
 
   --color-bg: #0a0a09;
   --color-bg-elevated: #141310;
@@ -146,4 +147,10 @@ body::after {
   );
   background-size: 160px 160px;
   animation: textureDrift 14s linear infinite;
+}
+
+/* Blinking caret for the tactical teletype metadata readout */
+@keyframes tactical-caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }

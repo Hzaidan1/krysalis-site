@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getProjectBySlug } from "@/lib/projects";
 import ProjectVideoPlayer from "@/components/ProjectVideoPlayer";
+import TacticalProjectDetails from "@/components/TacticalProjectDetails";
 
 export default async function ProjectPage({
   params,
@@ -40,34 +41,7 @@ export default async function ProjectPage({
           {project.title}
         </h1>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-10 mb-16 pb-12 border-b border-[var(--color-border)] font-[family-name:var(--font-body)] text-sm">
-          <div>
-            <p className="font-[family-name:var(--font-display)] text-[var(--color-earth-light)] uppercase text-xs tracking-[0.16em] mb-4">
-              Client
-            </p>
-            <p className="text-[var(--color-text-dim)]">{project.client}</p>
-          </div>
-          <div>
-            <p className="font-[family-name:var(--font-display)] text-[var(--color-earth-light)] uppercase text-xs tracking-[0.16em] mb-4">
-              Year &amp; Location
-            </p>
-            <p className="text-[var(--color-text-dim)]">
-              {project.year}, {project.location ?? "[Location]"}
-            </p>
-          </div>
-          <div>
-            <p className="font-[family-name:var(--font-display)] text-[var(--color-earth-light)] uppercase text-xs tracking-[0.16em] mb-4">
-              Category
-            </p>
-            <p className="text-[var(--color-text-dim)]">{project.category}</p>
-          </div>
-          <div>
-            <p className="font-[family-name:var(--font-display)] text-[var(--color-earth-light)] uppercase text-xs tracking-[0.16em] mb-4">
-              My Role
-            </p>
-            <p className="text-[var(--color-text-dim)]">{project.role ?? "[Role]"}</p>
-          </div>
-        </div>
+        <TacticalProjectDetails key={project.slug} project={project} />
 
         <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] leading-relaxed max-w-2xl mb-16">
           {project.description ??

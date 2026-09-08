@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Michroma } from "next/font/google";
+import { Inter, Michroma, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -14,6 +14,14 @@ const inter = Inter({
 // licensable) — used as the ONE display font across the whole site.
 const michroma = Michroma({
   variable: "--font-michroma",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+// Share Tech Mono: monospace terminal/teletype font for the tactical
+// project-metadata readout specifically (Client/Year/Category/Role).
+const shareTechMono = Share_Tech_Mono({
+  variable: "--font-share-tech-mono",
   subsets: ["latin"],
   weight: "400",
 });
@@ -37,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${michroma.variable} antialiased`}>
+      <body className={`${inter.variable} ${michroma.variable} ${shareTechMono.variable} antialiased`}>
         <Nav />
         {children}
       </body>
