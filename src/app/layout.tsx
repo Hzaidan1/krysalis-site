@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Bebas_Neue, Black_Ops_One } from "next/font/google";
+import { Inter, Michroma } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -9,14 +9,11 @@ const inter = Inter({
   weight: ["300", "400", "500"],
 });
 
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const blackOps = Black_Ops_One({
-  variable: "--font-black-ops",
+// Michroma: a free, geometric/squared-off tech font in the spirit of Bank
+// Gothic (the real MW3 "Modern Warfare" logo font, which isn't freely
+// licensable) — used as the ONE display font across the whole site.
+const michroma = Michroma({
+  variable: "--font-michroma",
   subsets: ["latin"],
   weight: "400",
 });
@@ -40,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${bebas.variable} ${blackOps.variable} antialiased`}>
+      <body className={`${inter.variable} ${michroma.variable} antialiased`}>
         <Nav />
         {children}
       </body>
