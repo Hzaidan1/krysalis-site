@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Michroma, Share_Tech_Mono } from "next/font/google";
+import { Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-});
-
-// Michroma: a free, geometric/squared-off tech font in the spirit of Bank
-// Gothic (the real MW3 "Modern Warfare" logo font, which isn't freely
-// licensable) — used as the ONE display font across the whole site.
-const michroma = Michroma({
-  variable: "--font-michroma",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-// Share Tech Mono: monospace terminal/teletype font for the tactical
-// project-metadata readout specifically (Client/Year/Category/Role).
+// Share Tech Mono: monospace terminal/tactical-HUD font. Used as the ONE
+// font across the entire site (display AND body) per explicit request —
+// previous attempts (Bebas Neue, then Michroma for display only, Inter for
+// body) left body copy looking like plain prose. This is a genuine identity
+// choice, not a subtle tweak — a monospace terminal font used for long body
+// paragraphs is unusual, but it directly matches the "mission briefing HUD"
+// direction the site has been pushed toward (teletype animation, tactical
+// metadata readouts, etc).
 const shareTechMono = Share_Tech_Mono({
   variable: "--font-share-tech-mono",
   subsets: ["latin"],
@@ -45,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${michroma.variable} ${shareTechMono.variable} antialiased`}>
+      <body className={`${shareTechMono.variable} antialiased`}>
         <Nav />
         {children}
       </body>
