@@ -21,23 +21,23 @@ const PHILOSOPHY = [
 const PROCESS = [
   {
     step: "01",
-    title: "Concept",
-    desc: "Understanding the story, the location and the mission before a single frame is shot.",
+    title: "Understand",
+    desc: "The objective, audience, environment and constraints come before the shot list.",
   },
   {
     step: "02",
-    title: "Shoot",
-    desc: "On the ground with the team, capturing atmosphere and detail as it actually happens.",
+    title: "Build",
+    desc: "We develop the concept, production plan and the people or resources required around it.",
   },
   {
     step: "03",
-    title: "Edit",
-    desc: "Pacing, sound design and colour brought together in post — where the story comes alive.",
+    title: "Produce",
+    desc: "We shoot the project, support the production or work with the material already available.",
   },
   {
     step: "04",
-    title: "Deliver",
-    desc: "Final cuts formatted for your platform, with stills and social edits available on request.",
+    title: "Finish",
+    desc: "Editing, sound, colour and delivery shaped around where the work will actually be seen.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
         speed={1}
       />
       <div className="relative z-10 w-full max-w-3xl">
-        <PageHeader kicker="About" title="About Krysalis" />
+        <PageHeader kicker="About" title="Built Inside the World We Film." />
 
         <motion.div
           initial="hidden"
@@ -70,16 +70,21 @@ export default function AboutPage() {
           className="font-[family-name:var(--font-body)] font-light text-[var(--color-text-dim)] text-base md:text-lg leading-relaxed space-y-5 mb-24"
         >
           <motion.p variants={itemVariants}>
-            Krysalis is primarily an independent tactical media studio,
-            creating cinematic films, field visuals and brand content for
-            teams, events and organisations that want their story told with
-            atmosphere and intent.
+            Krysalis is an independent UK tactical media and production
+            studio. It began inside the UK airsoft and tactical community,
+            creating the kind of media we wanted to see in the space
+            ourselves. That origin still shapes how we work — familiarity
+            with the equipment, environments, movement and small visual
+            details gives us a perspective a general production crew often
+            has to learn from scratch.
           </motion.p>
           <motion.p variants={itemVariants}>
-            We&apos;re connected to an active airsoft team and community — the
-            roots this studio grew from — and we&apos;re growing toward brand
-            campaigns, event media, apparel, short films and wider
-            film-adjacent work.
+            Today, Krysalis develops original productions, creates content
+            for brands and events, handles post-production and supports
+            wider screen productions working within the tactical space.
+            We&apos;re deliberately small and flexible. The team, equipment
+            and approach can be built around the project rather than forcing
+            every project through the same production model.
           </motion.p>
         </motion.div>
 
@@ -141,43 +146,6 @@ export default function AboutPage() {
                   </p>
                 </motion.div>
               ))}
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
-          variants={sectionVariants}
-          className="border-t border-[var(--color-border)] pt-16 mb-24"
-        >
-          <div className="flex flex-col sm:flex-row gap-8 items-start">
-            <motion.div
-              variants={itemVariants}
-              className="w-36 h-36 shrink-0 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] flex items-center justify-center"
-            >
-              <span className="font-[family-name:var(--font-body)] text-[10px] text-[var(--color-text-dim)] text-center px-2">
-                Founder photo placeholder
-              </span>
-            </motion.div>
-            <div>
-              <motion.h3 variants={itemVariants} className="font-[family-name:var(--font-display)] text-3xl mb-1">
-                [Founder Name]
-              </motion.h3>
-              <motion.p
-                variants={itemVariants}
-                className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] mb-4"
-              >
-                Founder &amp; Creative Director
-              </motion.p>
-              <motion.p
-                variants={itemVariants}
-                className="font-[family-name:var(--font-body)] font-light tracking-wide text-sm md:text-base text-[var(--color-text-dim)] leading-relaxed max-w-md"
-              >
-                [Short biography placeholder — directs, films and edits every
-                Krysalis production from concept through delivery.]
-              </motion.p>
             </div>
           </div>
         </motion.div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 // Share Tech Mono: monospace terminal/tactical-HUD font. Used as the ONE
 // font across the entire site (display AND body) per explicit request —
@@ -18,13 +19,13 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Krysalis Group | UK Tactical Media Studio",
+  title: "Krysalis Media | Tactical Media & Production Studio UK",
   description:
-    "Krysalis is an independent UK tactical media studio creating cinematic films, field visuals and brand content.",
+    "UK tactical media and production studio creating brand content, original films, post-production, event coverage and specialist production support.",
   openGraph: {
-    title: "Krysalis Group | UK Tactical Media Studio",
+    title: "Krysalis Media | Tactical Media & Production Studio UK",
     description:
-      "Cinematic films, field visuals and brand content — UK-based, available for travel.",
+      "UK tactical media and production studio creating brand content, original films, post-production, event coverage and specialist production support.",
     type: "website",
   },
 };
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className={`${shareTechMono.variable} antialiased`}>
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

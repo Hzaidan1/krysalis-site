@@ -36,7 +36,7 @@ export default function Nav() {
           href="https://instagram.com/krysalisgrp"
           target="_blank"
           rel="noreferrer"
-          aria-label="Krysalis Group on Instagram"
+          aria-label="Krysalis on Instagram"
         >
           <svg
             width="18"

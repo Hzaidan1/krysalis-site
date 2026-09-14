@@ -6,28 +6,46 @@ import { motion } from "framer-motion";
 const SERVICES = [
   {
     num: "01",
-    title: "Brand Films",
-    body: "Cinematic edits that turn products, teams and events into stories people remember.",
-    quote: "From concept to final delivery.",
+    title: "Full Production",
+    body: "We develop and produce original films, campaigns and short-form content around the brief — handling concept development, planning, shooting, direction and post-production.",
+    tagline: "Concept / Pre-Production / Filming / Direction / Post",
   },
   {
     num: "02",
-    title: "Video Editing",
+    title: "Post-Production",
     kicker: "Already have the footage?",
-    body: "We transform your raw clips into high-impact reels, advertisements and short films ready for Instagram, TikTok and YouTube.",
-    quote: "Your footage. Our storytelling.",
+    body: "Raw footage doesn't need to start with us to finish with us. We turn supplied footage into finished films, advertisements and social content — building structure, pace, sound and visual identity around the material already available.",
+    tagline: "Editing / Sound Design / Colour / Motion / Social Cutdowns",
     link: "/editing-services",
+    ctaLabel: "Explore Post-Production",
   },
   {
     num: "03",
-    title: "Event Coverage",
-    body: "From skirmishes to product launches, we create films that capture the atmosphere—not just the action.",
+    title: "Brand Content",
+    body: "Campaign films, product content and social-first media created specifically for tactical, outdoor and performance brands. The aim isn't simply to put a product in frame. It's to create a world in which it belongs.",
+    tagline: "Campaigns / Product Films / Launches / Social Content",
   },
   {
     num: "04",
-    title: "Creative Direction",
-    kicker: "Need more than an editor?",
-    body: "We help shape concepts, pacing, messaging and visual identity before the first frame is even shot.",
+    title: "Tactical Production Support",
+    kicker: "Beyond the camera.",
+    body: "Practical support for productions working inside the tactical world. From suitable supporting artists and tactical-background performers to kit familiarity, movement rehearsal and visual preparation for camera, Krysalis can help productions build more convincing tactical scenes.",
+    tagline: "Supporting Artists / Performance Support / Movement / Kit / Continuity",
+    link: "/contact",
+    ctaLabel: "Production Support",
+  },
+  {
+    num: "05",
+    title: "Event & Field Coverage",
+    body: "Coverage for competitions, game days, launches and activations — capturing the people, atmosphere and details around the action rather than simply documenting what happened.",
+    tagline: "Event Films / Social Coverage / BTS / Short-Form",
+  },
+  {
+    num: "06",
+    title: "Creative Development",
+    kicker: "Before the first frame.",
+    body: "Sometimes the project needs an idea before it needs a camera. We develop concepts, treatments, visual direction and shot structures for productions and campaigns — whether Krysalis produces the finished work or contributes to a wider creative team.",
+    tagline: "Concepts / Treatments / Visual Direction / Shot Planning",
   },
 ];
 
@@ -83,9 +101,9 @@ export default function WhatWeDo() {
                   <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-sm md:text-base leading-relaxed max-w-md">
                     {s.body}
                   </p>
-                  {s.quote && (
-                    <p className="font-[family-name:var(--font-body)] italic tracking-wide text-[var(--color-earth-light)] text-sm md:text-base mt-4">
-                      &ldquo;{s.quote}&rdquo;
+                  {s.tagline && (
+                    <p className="font-[family-name:var(--font-body)] uppercase tracking-[0.1em] text-[var(--color-earth-light)] text-xs md:text-sm mt-4">
+                      {s.tagline}
                     </p>
                   )}
                   {s.link && (
@@ -93,7 +111,7 @@ export default function WhatWeDo() {
                       href={s.link}
                       className="inline-block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] mt-4 border-b border-[var(--color-earth-light)]/40 hover:border-[var(--color-earth-light)] transition-colors"
                     >
-                      Learn more &rarr;
+                      {s.ctaLabel ?? "Learn more"} &rarr;
                     </Link>
                   )}
                 </div>

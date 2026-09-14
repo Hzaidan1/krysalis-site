@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/Button";
 
 // Scrub only covers the action footage — frames 301-331 are the video's own
-// fade-to-logo/black ending, which we skip since HeroOutro shows the logo
-// properly further down the page. This removes dead scroll space entirely.
+// fade-to-logo/black ending, which we skip since it's not needed on the page
 const FRAME_COUNT = 300;
 const FRAME_PATH = (i: number) =>
   `/frames/frame_${String(i).padStart(4, "0")}.webp`;
@@ -28,9 +27,9 @@ type Scene = {
 const SCENES: Scene[] = [
   {
     range: [0, 0.22],
-    kicker: "UK Tactical Media Studio",
+    kicker: "UK Tactical Media & Production Studio",
     title: "Before the action, there is the story.",
-    body: "Krysalis is an independent UK tactical media studio creating cinematic films, field visuals and brand content.",
+    body: "Krysalis develops, produces and supports media for the tactical world — from original films and brand content to post-production, event coverage and specialist support for screen productions.",
     buttons: [
       { label: "View Our Work", href: "/work", variant: "solid" },
       { label: "Start a Project", href: "/contact", variant: "outline" },

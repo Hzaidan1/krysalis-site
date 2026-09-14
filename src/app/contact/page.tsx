@@ -7,12 +7,13 @@ import Button from "@/components/Button";
 import ReactiveBackground from "@/components/ReactiveBackground";
 
 const PROJECT_TYPES = [
-  "Brand campaign",
-  "Product film",
-  "Event coverage",
-  "Editing and post-production",
-  "Team or creator content",
-  "Other",
+  "Full Production",
+  "Post-Production",
+  "Brand Content",
+  "Event Coverage",
+  "Production Support",
+  "Creative Development",
+  "Something Else",
 ];
 
 // Curated timestamps in bg-prep.mp4 — one per step, evenly spaced so each
@@ -137,10 +138,10 @@ export default function ContactPage() {
           className="relative z-10 text-center max-w-md"
         >
           <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl mb-4">
-            Message Received
+            Brief Received
           </h1>
           <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)]">
-            Thanks for reaching out — we&apos;ll be in touch shortly.
+            We&apos;ll take a look and come back to you directly.
           </p>
         </motion.div>
       </main>
@@ -158,11 +159,14 @@ export default function ContactPage() {
       <div className="relative z-10 w-full max-w-2xl">
         <PageHeader
           kicker="Contact"
-          title="Work With Krysalis"
-          subtitle="UK-based and available for travel."
+          title="Start a Project."
+          subtitle="Full production, post-production, brand content, event coverage or tactical production support — tell us what you're working on and where Krysalis could fit into it. A finished brief isn't required."
         />
 
-        <div className="flex items-center gap-2 mb-10 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-dim)]">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-dim)]">
+          <span className="uppercase tracking-[0.1em] text-xs">
+            UK-based and available for travel.
+          </span>
           <a
             href="https://instagram.com/krysalisgrp"
             target="_blank"
@@ -222,7 +226,7 @@ export default function ContactPage() {
                       onChange={(e) => update("name", e.target.value)}
                     />
                   </Field>
-                  <Field label="Brand, team or organisation">
+                  <Field label="Company, brand or production">
                     <input
                       className={inputClass}
                       value={data.org}
@@ -267,10 +271,11 @@ export default function ContactPage() {
               )}
 
               {step === 2 && (
-                <Field label="Project description">
+                <Field label="Project details">
                   <textarea
                     rows={5}
                     className={inputClass}
+                    placeholder="What are you trying to make, and where do you need us?"
                     value={data.description}
                     onChange={(e) => update("description", e.target.value)}
                   />
@@ -279,21 +284,21 @@ export default function ContactPage() {
 
               {step === 3 && (
                 <>
-                  <Field label="Preferred timeframe">
+                  <Field label="Ideal timeframe">
                     <input
                       className={inputClass}
                       value={data.timeframe}
                       onChange={(e) => update("timeframe", e.target.value)}
                     />
                   </Field>
-                  <Field label="Approximate budget (optional)">
+                  <Field label="Budget range (optional)">
                     <input
                       className={inputClass}
                       value={data.budget}
                       onChange={(e) => update("budget", e.target.value)}
                     />
                   </Field>
-                  <Field label="Relevant links (optional)">
+                  <Field label="Reference / footage link (optional)">
                     <input
                       className={inputClass}
                       value={data.links}
@@ -322,7 +327,7 @@ export default function ContactPage() {
               <Button label="Next" onClick={next} variant="solid" />
             ) : (
               <Button
-                label={sending ? "Sending…" : "Send Enquiry"}
+                label={sending ? "Sending…" : "Send Project"}
                 onClick={submit}
                 variant="solid"
               />

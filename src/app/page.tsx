@@ -1,13 +1,15 @@
 import ScrollHero from "@/components/ScrollHero";
 import WhatWeDo from "@/components/WhatWeDo";
-import HeroOutro from "@/components/HeroOutro";
+import BeyondTheFrame from "@/components/BeyondTheFrame";
+import HomeFinalCTA from "@/components/HomeFinalCTA";
 
 export default function Home() {
   return (
     <main>
       <ScrollHero />
       <WhatWeDo />
-      <HeroOutro />
+      <BeyondTheFrame />
+      <HomeFinalCTA />
     </main>
   );
 }
