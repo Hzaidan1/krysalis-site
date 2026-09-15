@@ -13,7 +13,7 @@ export default function HomeFinalCTA() {
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="w-full max-w-2xl mx-auto text-center"
       >
-        <h2 className="font-[family-name:var(--font-display)] font-semibold uppercase tracking-wide text-3xl md:text-5xl mb-8 leading-tight">
+        <h2 className="font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-2xl sm:text-4xl lg:text-5xl mb-8 leading-tight">
           What are you trying to make?
         </h2>
         <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-sm md:text-base leading-relaxed max-w-xl mx-auto mb-10">
