@@ -29,6 +29,7 @@ export default function Nav() {
 
       <nav className="flex items-center gap-6 md:gap-9 font-[family-name:var(--font-display)] tracking-wide text-sm md:text-base">
         <NavLink href="/work">Work</NavLink>
+        <NavLink href="/capabilities">Capabilities</NavLink>
         <NavLink href="/about">About</NavLink>
         <NavLink href="/contact">Contact</NavLink>
         <motion.a

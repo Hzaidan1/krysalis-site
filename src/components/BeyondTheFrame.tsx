@@ -31,7 +31,7 @@ export default function BeyondTheFrame() {
           work alongside the production&apos;s appropriately qualified
           specialists.
         </p>
-        <Button label="Explore Production Support" href="/contact" variant="outline" />
+        <Button label="Explore Production Support" href="/production-support" variant="outline" />
       </motion.div>
     </section>
   );

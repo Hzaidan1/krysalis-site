@@ -20,6 +20,9 @@ export default function Footer() {
           <Link href="/work" className="hover:text-[var(--color-earth-light)] transition-colors">
             Work
           </Link>
+          <Link href="/capabilities" className="hover:text-[var(--color-earth-light)] transition-colors">
+            Capabilities
+          </Link>
           <Link href="/about" className="hover:text-[var(--color-earth-light)] transition-colors">
             About
           </Link>

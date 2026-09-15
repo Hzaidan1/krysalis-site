@@ -16,7 +16,7 @@ const SERVICES = [
     kicker: "Already have the footage?",
     body: "Raw footage doesn't need to start with us to finish with us. We turn supplied footage into finished films, advertisements and social content — building structure, pace, sound and visual identity around the material already available.",
     tagline: "Editing / Sound Design / Colour / Motion / Social Cutdowns",
-    link: "/editing-services",
+    link: "/post-production",
     ctaLabel: "Explore Post-Production",
   },
   {
@@ -31,7 +31,7 @@ const SERVICES = [
     kicker: "Beyond the camera.",
     body: "Practical support for productions working inside the tactical world. From suitable supporting artists and tactical-background performers to kit familiarity, movement rehearsal and visual preparation for camera, Krysalis can help productions build more convincing tactical scenes.",
     tagline: "Supporting Artists / Performance Support / Movement / Kit / Continuity",
-    link: "/contact",
+    link: "/production-support",
     ctaLabel: "Production Support",
   },
   {

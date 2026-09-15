@@ -6,12 +6,14 @@ import type { Project } from "@/lib/projects";
 
 // --- tuning ---
 const CHAR_INTERVAL_MS = 42; // typing speed, per character
-const LINE_PAUSE_MS = 420; // pause after a line completes, before the next starts
+const LINE_PAUSE_MS = 380; // pause after a line completes, before the next starts
 
 type Entry =
+  | { kind: "tag"; text: string }
   | { kind: "title"; text: string }
-  | { kind: "meta"; label: string; value: string }
+  | { kind: "heading"; text: string }
   | { kind: "prose"; text: string }
+  | { kind: "listItem"; text: string }
   | { kind: "credits"; text: string }
   | { kind: "link"; text: string; href: string };
 
@@ -53,8 +55,6 @@ function useTypingClick() {
     try {
       const now = ctx.currentTime;
 
-      // --- broadband snap: short noise burst, highpassed to stay bright
-      // and full-spectrum rather than a narrow, tonal "beep" ---
       const noiseDuration = 0.016;
       const bufferSize = Math.floor(ctx.sampleRate * noiseDuration);
       const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
@@ -87,8 +87,6 @@ function useTypingClick() {
       noise.start(now);
       noise.stop(now + noiseDuration);
 
-      // --- low punch: the keycap bottoming out, arriving almost
-      // immediately after the snap, same as a real switch ---
       const thump = ctx.createOscillator();
       thump.type = "sine";
       thump.frequency.value = 140 + Math.random() * 60;
@@ -106,70 +104,81 @@ function useTypingClick() {
   };
 }
 
-/** Splits a meta line's revealed text into its label/value portions so the
- * label can stay gold and the value off-white even mid-type. */
-function MetaLineContent({ label, revealed }: { label: string; revealed: string }) {
-  const prefix = `${label}: `;
-  if (revealed.length <= prefix.length) {
-    return <span className="text-[var(--color-earth-light)] uppercase tracking-[0.12em]">{revealed}</span>;
-  }
-  return (
-    <>
-      <span className="text-[var(--color-earth-light)] uppercase tracking-[0.12em]">{prefix}</span>
-      <span className="text-[var(--color-text)]">{revealed.slice(prefix.length)}</span>
-    </>
-  );
-}
-
 function entryFullText(entry: Entry): string {
-  if (entry.kind === "meta") return `${entry.label}: ${entry.value}`;
   return entry.text;
 }
 
 function entryClassName(entry: Entry): string {
   switch (entry.kind) {
+    case "tag":
+      return "font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-dim)] mb-4 block";
     case "title":
-      return "font-[family-name:var(--font-display)] text-4xl md:text-6xl leading-tight mb-10 block";
-    case "meta":
-      return "font-[family-name:var(--font-tactical-mono)] text-sm md:text-base mb-3 block";
+      return "font-[family-name:var(--font-display)] text-3xl md:text-5xl leading-tight mb-10 block";
+    case "heading":
+      return "font-[family-name:var(--font-display)] text-[var(--color-earth-light)] uppercase tracking-[0.16em] text-sm mb-3 mt-10 block";
     case "prose":
-      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text-dim)] text-sm leading-relaxed max-w-2xl mb-6 block";
+      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text-dim)] text-sm leading-relaxed max-w-2xl mb-2 block";
+    case "listItem":
+      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text)] text-sm mb-1 block";
     case "credits":
-      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text-dim)] text-xs mb-8 block";
+      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text-dim)] text-xs mb-2 block";
     case "link":
       return "font-[family-name:var(--font-tactical-mono)] text-sm hover:text-[var(--color-earth-light)] transition-colors";
   }
 }
 
-export default function TacticalBriefing({ project }: { project: Project }) {
+export default function TacticalBriefing({
+  project,
+  nextHref,
+}: {
+  project: Project;
+  /** Href for "Next Project →" — omitted (falls back to /work) if there's
+   * only one project or no next one could be resolved. */
+  nextHref?: string;
+}) {
   const playClick = useTypingClick();
 
-  const entries: Entry[] = useMemo(
-    () => [
-      { kind: "title", text: project.title },
-      { kind: "meta", label: "Client", value: project.client },
+  const entries: Entry[] = useMemo(() => {
+    const list: Entry[] = [
+      { kind: "tag", text: `${project.category} / ${project.year}` },
+      { kind: "title", text: `${project.title} — ${project.client}` },
+      { kind: "heading", text: "The Brief" },
       {
-        kind: "meta",
-        label: "Year & Location",
-        value: `${project.year}, ${project.location ?? "[Location]"}`,
+        kind: "prose",
+        text: project.brief ?? "[The objective — 2-3 sentences once supplied.]",
       },
-      { kind: "meta", label: "Category", value: project.category },
-      { kind: "meta", label: "My Role", value: project.role ?? "[Role]" },
+      { kind: "heading", text: "Our Role" },
+      {
+        kind: "prose",
+        text: project.role ?? "[Specific deliverables — e.g. Concept Development / Direction / Filming / Editing]",
+      },
+      { kind: "heading", text: "The Approach" },
       {
         kind: "prose",
         text:
-          project.description ??
-          "[Short explanation of the concept — placeholder copy until real project details are supplied.]",
+          project.approach ??
+          "[Creative direction, pacing and visual decisions — once supplied.]",
       },
+      { kind: "heading", text: "Deliverables" },
+    ];
+
+    const deliverables = project.deliverables ?? ["[Deliverables list — once supplied.]"];
+    for (const d of deliverables) {
+      list.push({ kind: "listItem", text: `— ${d}` });
+    }
+
+    list.push(
+      { kind: "heading", text: "Credits" },
       {
         kind: "credits",
-        text: `Credits: ${project.credits ?? "[Directed / Filmed / Edited by — placeholder]"}`,
+        text: project.credits ?? "[Verified credits — once supplied.]",
       },
-      { kind: "link", text: "\u2190 All Work", href: "/work" },
-      { kind: "link", text: "Start a Project \u2192", href: "/contact" },
-    ],
-    [project]
-  );
+      { kind: "link", text: "Next Project \u2192", href: nextHref ?? "/work" },
+      { kind: "link", text: "Start a Project \u2192", href: "/contact" }
+    );
+
+    return list;
+  }, [project, nextHref]);
 
   const [entryIndex, setEntryIndex] = useState(0);
   const [charCount, setCharCount] = useState(0);
@@ -207,15 +216,6 @@ export default function TacticalBriefing({ project }: { project: Project }) {
       />
     );
 
-    if (entry.kind === "meta") {
-      return (
-        <>
-          <MetaLineContent label={entry.label} revealed={revealed} />
-          {caret}
-        </>
-      );
-    }
-
     if (entry.kind === "link") {
       return (
         <Link href={entry.href}>
@@ -244,8 +244,6 @@ export default function TacticalBriefing({ project }: { project: Project }) {
           const entry = entries[i];
 
           if (entry.kind === "link") {
-            // consecutive link entries share one flex row instead of
-            // stacking, since they're rendered side-by-side in the UI
             const rowIndices: number[] = [];
             let j = i;
             while (j < entries.length && entries[j].kind === "link" && j <= entryIndex) {
@@ -255,7 +253,7 @@ export default function TacticalBriefing({ project }: { project: Project }) {
             nodes.push(
               <div
                 key={i}
-                className="flex justify-between items-center pt-10 border-t border-[var(--color-border)] mb-20"
+                className="flex justify-between items-center pt-10 mt-10 border-t border-[var(--color-border)] mb-20"
               >
                 {rowIndices.map((idx) => (
                   <span key={idx} className={entryClassName(entries[idx])}>
