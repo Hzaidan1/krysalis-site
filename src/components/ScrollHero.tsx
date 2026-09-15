@@ -244,7 +244,7 @@ export default function ScrollHero() {
                     {scene.kicker}
                   </p>
                 )}
-                <h1 className="relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-3xl sm:text-5xl lg:text-7xl leading-[1.05] max-w-3xl mb-5">
+                <h1 className="relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-[clamp(2rem,6vw,4.5rem)] leading-[1.05] max-w-3xl mb-5">
                   {scene.title}
                   <span
                     aria-hidden="true"

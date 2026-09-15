@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en">
       <body
         className={`${shareTechMono.variable} ${chakraPetch.variable} ${barlow.variable} antialiased overflow-x-hidden`}
       >
