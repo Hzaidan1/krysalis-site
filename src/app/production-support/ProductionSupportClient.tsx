@@ -39,7 +39,7 @@ const itemVariants = {
 
 export default function ProductionSupportClient() {
   return (
-    <main className="min-h-screen w-full flex justify-center px-6 md:px-10 pt-36 pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
       <StaticBackground src="/images/work-bg-still.jpg" grayscale />
       <div className="relative z-10 w-full max-w-3xl">
         <PageHeader
@@ -58,7 +58,7 @@ export default function ProductionSupportClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
             {PILLARS.map((p, i) => (
               <motion.div key={p.title} variants={itemVariants}>
-                <span className="font-[family-name:var(--font-display)] text-[var(--color-earth-light)] text-sm">
+                <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] text-sm">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-lg md:text-xl mt-2 mb-2">

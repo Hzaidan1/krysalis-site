@@ -43,7 +43,7 @@ export default function PostProductionClient() {
   }, []);
 
   return (
-    <main className="min-h-screen w-full flex justify-center px-6 md:px-10 pt-36 pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
       <ReactiveBackground
         src="/videos/bg-contact-film.mp4"
         frames={BG_FRAMES}
@@ -75,7 +75,7 @@ export default function PostProductionClient() {
                 className="group flex items-center gap-3 border-b border-[var(--color-border)] hover:border-[var(--color-earth-light)]/60 pb-4 transition-colors duration-300"
               >
                 <span className="w-1.5 h-1.5 bg-[var(--color-earth-light)] shrink-0 transition-transform duration-300 group-hover:scale-150" />
-                <p className="font-[family-name:var(--font-body)] tracking-wide text-sm md:text-base text-[var(--color-text-dim)]">
+                <p className="font-[family-name:var(--font-tactical-mono)] tracking-wide text-sm md:text-base text-[var(--color-text-dim)]">
                   {c}
                 </p>
               </motion.div>

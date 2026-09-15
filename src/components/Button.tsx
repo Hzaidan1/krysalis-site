@@ -21,7 +21,7 @@ export default function Button({
   arrow = true,
 }: Props) {
   const base =
-    "group relative font-[family-name:var(--font-display)] font-medium text-sm tracking-[0.22em] uppercase px-9 py-4 inline-flex items-center justify-center gap-2 overflow-hidden";
+    "group relative font-[family-name:var(--font-tactical-mono)] font-medium text-sm tracking-[0.22em] uppercase px-9 py-4 inline-flex items-center justify-center gap-2 overflow-hidden";
 
   const styles = {
     solid:

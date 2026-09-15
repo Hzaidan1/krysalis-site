@@ -20,9 +20,9 @@ export default function WorkPageClient() {
   const [filter, setFilter] = useState<Filter>("All");
 
   return (
-    <main className="min-h-screen w-full flex justify-center px-6 md:px-10 pt-36 pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
       <StaticBackground src="/images/work-bg-still.jpg" grayscale={false} />
-      <div className="relative z-10 w-full max-w-5xl">
+      <div className="relative z-10 w-full max-w-6xl">
         <PageHeader
           kicker="Selected Work"
           title="Projects, Collaborations & Commissions."
@@ -34,7 +34,7 @@ export default function WorkPageClient() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.16em] px-4 py-2 border transition-colors duration-300 ${
+              className={`font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.16em] px-4 py-2 border transition-colors duration-300 ${
                 filter === f
                   ? "border-[var(--color-earth-light)] text-[var(--color-earth-light)] bg-[var(--color-earth-light)]/10"
                   : "border-[var(--color-border)] text-[var(--color-text-dim)] hover:border-[var(--color-earth-light)]/50 hover:text-[var(--color-text)]"
@@ -45,7 +45,7 @@ export default function WorkPageClient() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           <AnimatePresence mode="popLayout">
             {PROJECTS.filter((p) => matchesFilter(p, filter)).map((p) => (
               <motion.div
@@ -74,14 +74,14 @@ export default function WorkPageClient() {
                     ) : (
                       <>
                         <div className="placeholder-texture absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]" />
-                        <span className="relative font-[family-name:var(--font-body)] text-[10px] uppercase tracking-[0.15em] text-[var(--color-text-dim)] transition-opacity duration-300 group-hover:opacity-0">
+                        <span className="relative font-[family-name:var(--font-tactical-mono)] text-[10px] uppercase tracking-[0.15em] text-[var(--color-text-dim)] transition-opacity duration-300 group-hover:opacity-0">
                           Thumbnail placeholder
                         </span>
                       </>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300" />
                     <div className="absolute inset-0 flex items-end justify-center pb-6 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                      <span className="font-[family-name:var(--font-display)] text-xs tracking-[0.28em] uppercase border border-[var(--color-earth-light)]/60 text-[var(--color-earth-light)] px-4 py-2 bg-[var(--color-bg)]/70 backdrop-blur-sm">
+                      <span className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.28em] uppercase border border-[var(--color-earth-light)]/60 text-[var(--color-earth-light)] px-4 py-2 bg-[var(--color-bg)]/70 backdrop-blur-sm">
                         View Project &rarr;
                       </span>
                     </div>
@@ -93,7 +93,7 @@ export default function WorkPageClient() {
                         &rarr;
                       </span>
                     </h3>
-                    <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-sm text-[var(--color-text-dim)]">
+                    <p className="font-[family-name:var(--font-tactical-mono)] font-light tracking-wide text-sm text-[var(--color-text-dim)]">
                       {p.serviceDeliverable}
                     </p>
                   </div>

@@ -111,7 +111,7 @@ const itemVariants = {
 
 export default function CapabilitiesClient() {
   return (
-    <main className="min-h-screen w-full flex justify-center px-6 md:px-10 pt-36 pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
       <StaticBackground src="/images/work-bg-still.jpg" grayscale />
       <div className="relative z-10 w-full max-w-4xl">
         <PageHeader
@@ -131,7 +131,7 @@ export default function CapabilitiesClient() {
               className="border-t border-[var(--color-border)] pt-10"
             >
               <div className="flex items-start gap-4 mb-4">
-                <span className="font-[family-name:var(--font-display)] text-[var(--color-earth)] text-lg">
+                <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth)] text-lg">
                   {s.num}
                 </span>
                 <h2 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-2xl md:text-3xl">
@@ -149,14 +149,14 @@ export default function CapabilitiesClient() {
                     className="flex items-center gap-3 text-sm text-[var(--color-text-dim)]"
                   >
                     <span className="w-1 h-1 bg-[var(--color-earth-light)] shrink-0" />
-                    <span className="font-[family-name:var(--font-body)] tracking-wide">{item}</span>
+                    <span className="font-[family-name:var(--font-tactical-mono)] tracking-wide">{item}</span>
                   </motion.div>
                 ))}
               </div>
               {s.link && (
                 <Link
                   href={s.link}
-                  className="inline-block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] border-b border-[var(--color-earth-light)]/40 hover:border-[var(--color-earth-light)] transition-colors"
+                  className="inline-block font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] border-b border-[var(--color-earth-light)]/40 hover:border-[var(--color-earth-light)] transition-colors"
                 >
                   {s.ctaLabel} &rarr;
                 </Link>

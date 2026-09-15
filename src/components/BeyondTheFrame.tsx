@@ -13,7 +13,7 @@ export default function BeyondTheFrame() {
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="w-full max-w-3xl mx-auto text-center"
       >
-        <p className="font-[family-name:var(--font-display)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
+        <p className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
           Beyond the Frame
         </p>
         <h2 className="font-[family-name:var(--font-display)] font-semibold uppercase tracking-wide text-3xl md:text-5xl mb-8 leading-tight">

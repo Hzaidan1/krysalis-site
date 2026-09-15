@@ -5,10 +5,10 @@ export default function Footer() {
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-bg)] px-6 md:px-10 py-12 md:py-16">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
         <div>
-          <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.2em] text-sm text-[var(--color-text)]">
+          <p className="font-[family-name:var(--font-tactical-mono)] uppercase tracking-[0.2em] text-sm text-[var(--color-text)]">
             Krysalis Media
           </p>
-          <p className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.12em] text-[var(--color-text-dim)] mt-1">
+          <p className="font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.12em] text-[var(--color-text-dim)] mt-1">
             Tactical Media &amp; Production Studio
           </p>
           <p className="font-[family-name:var(--font-body)] text-xs text-[var(--color-text-dim)] mt-3">
@@ -16,7 +16,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav className="flex items-center gap-6 font-[family-name:var(--font-display)] tracking-wide text-sm">
+        <nav className="flex items-center gap-6 font-[family-name:var(--font-tactical-mono)] tracking-wide text-sm">
           <Link href="/work" className="hover:text-[var(--color-earth-light)] transition-colors">
             Work
           </Link>

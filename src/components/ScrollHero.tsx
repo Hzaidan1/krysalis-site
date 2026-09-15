@@ -240,11 +240,11 @@ export default function ScrollHero() {
                 className="flex flex-col items-center"
               >
                 {scene.kicker && (
-                  <p className="font-[family-name:var(--font-body)] text-xs tracking-[0.25em] uppercase text-[var(--color-earth-light)] mb-5">
+                  <p className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.25em] uppercase text-[var(--color-earth-light)] mb-5">
                     {scene.kicker}
                   </p>
                 )}
-                <h1 className="relative font-[family-name:var(--font-display)] font-normal text-[clamp(2rem,6vw,4.5rem)] leading-[1.05] max-w-3xl mb-5">
+                <h1 className="relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-[clamp(2rem,6vw,4.5rem)] leading-[1.05] max-w-3xl mb-5">
                   {scene.title}
                   <span
                     aria-hidden="true"

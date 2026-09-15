@@ -16,7 +16,7 @@ export default function PageHeader({
   backdrop?: string;
 }) {
   return (
-    <div className="relative mb-16 md:mb-24 -mx-6 md:-mx-10 px-6 md:px-10 pt-4 pb-16 md:pb-20 overflow-hidden">
+    <div className="relative mb-16 md:mb-24 -mx-4 sm:-mx-6 lg:-mx-10 px-4 sm:px-6 lg:px-10 pt-4 pb-16 md:pb-20 overflow-hidden">
       {backdrop && (
         <>
           <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -52,10 +52,10 @@ export default function PageHeader({
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="relative"
       >
-        <p className="font-[family-name:var(--font-display)] tracking-[0.3em] uppercase text-[var(--color-earth-light)] text-sm mb-3">
+        <p className="font-[family-name:var(--font-tactical-mono)] tracking-[0.3em] uppercase text-[var(--color-earth-light)] text-xs sm:text-sm mb-3">
           {kicker}
         </p>
-        <h1 className="font-[family-name:var(--font-display)] text-5xl md:text-7xl leading-[0.95] mb-5">
+        <h1 className="font-[family-name:var(--font-display)] uppercase tracking-wide font-bold text-3xl sm:text-5xl lg:text-7xl leading-[1.05] sm:leading-[0.95] mb-5">
           {title}
         </h1>
         {subtitle && (

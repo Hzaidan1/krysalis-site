@@ -52,7 +52,7 @@ const itemVariants = {
 
 export default function AboutClient() {
   return (
-    <main className="min-h-screen w-full flex justify-center px-6 md:px-10 pt-36 pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
       <ReactiveBackground
         src="/videos/bg-prep.mp4"
         frames={FRAMES}
@@ -105,10 +105,10 @@ export default function AboutClient() {
                 variants={itemVariants}
                 className="group flex items-center gap-4 border-b border-[var(--color-border)] hover:border-[var(--color-earth-light)]/60 pb-4 transition-colors duration-300"
               >
-                <span className="font-[family-name:var(--font-display)] text-[var(--color-earth-light)] text-sm w-6 transition-transform duration-300 group-hover:translate-x-1">
+                <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] text-sm w-6 transition-transform duration-300 group-hover:translate-x-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="font-[family-name:var(--font-body)] tracking-wide text-sm md:text-base">
+                <p className="font-[family-name:var(--font-tactical-mono)] tracking-wide text-sm md:text-base">
                   {p}
                 </p>
               </motion.div>
@@ -135,7 +135,7 @@ export default function AboutClient() {
                   variants={itemVariants}
                   className="relative flex flex-col items-start sm:items-center text-left sm:text-center"
                 >
-                  <span className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-earth-light)]/60 bg-[var(--color-bg)] font-[family-name:var(--font-display)] text-[var(--color-earth-light)] text-sm mb-4">
+                  <span className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-earth-light)]/60 bg-[var(--color-bg)] font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] text-sm mb-4">
                     {s.step}
                   </span>
                   <h4 className="font-[family-name:var(--font-display)] text-lg md:text-xl mb-2">

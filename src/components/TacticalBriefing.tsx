@@ -111,13 +111,13 @@ function entryFullText(entry: Entry): string {
 function entryClassName(entry: Entry): string {
   switch (entry.kind) {
     case "tag":
-      return "font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-dim)] mb-4 block";
+      return "font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-dim)] mb-4 block";
     case "title":
       return "font-[family-name:var(--font-display)] text-3xl md:text-5xl leading-tight mb-10 block";
     case "heading":
-      return "font-[family-name:var(--font-display)] text-[var(--color-earth-light)] uppercase tracking-[0.16em] text-sm mb-3 mt-10 block";
+      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] uppercase tracking-[0.16em] text-sm mb-3 mt-10 block";
     case "prose":
-      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text-dim)] text-sm leading-relaxed max-w-2xl mb-2 block";
+      return "font-[family-name:var(--font-body)] text-[var(--color-text-dim)] text-sm leading-relaxed max-w-2xl mb-2 block";
     case "listItem":
       return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text)] text-sm mb-1 block";
     case "credits":

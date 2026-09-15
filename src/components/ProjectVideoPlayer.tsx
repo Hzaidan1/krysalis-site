@@ -39,7 +39,7 @@ export default function ProjectVideoPlayer({ src, title }: { src: string; title:
           onClick={handleManualPlay}
           className="absolute inset-0 flex items-center justify-center bg-[var(--color-bg)]/60 backdrop-blur-sm group"
         >
-          <span className="font-[family-name:var(--font-display)] text-sm tracking-[0.28em] uppercase border border-[var(--color-earth-light)]/60 text-[var(--color-earth-light)] px-6 py-3 bg-[var(--color-bg)]/70 group-hover:bg-[var(--color-bg)]/90 transition-colors">
+          <span className="font-[family-name:var(--font-tactical-mono)] text-sm tracking-[0.28em] uppercase border border-[var(--color-earth-light)]/60 text-[var(--color-earth-light)] px-6 py-3 bg-[var(--color-bg)]/70 group-hover:bg-[var(--color-bg)]/90 transition-colors">
             &#9654; Play {title}
           </span>
         </button>

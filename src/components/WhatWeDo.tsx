@@ -60,7 +60,7 @@ export default function WhatWeDo() {
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-16 md:mb-20"
         >
-          <p className="font-[family-name:var(--font-display)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
+          <p className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
             What We Do
           </p>
           <h2 className="font-[family-name:var(--font-display)] font-semibold uppercase tracking-wide text-3xl md:text-5xl">
@@ -81,14 +81,14 @@ export default function WhatWeDo() {
                 i !== 0 ? "border-t border-[var(--color-border)]" : ""
               }`}
             >
-              <span className="font-[family-name:var(--font-display)] text-[var(--color-earth)] group-hover:text-[var(--color-earth-light)] transition-colors duration-300 text-lg font-semibold">
+              <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth)] group-hover:text-[var(--color-earth-light)] transition-colors duration-300 text-lg font-semibold">
                 {s.num}
               </span>
 
               <div className="grid grid-cols-1 md:grid-cols-[minmax(0,220px)_1fr] gap-3 md:gap-12">
                 <div>
                   {s.kicker && (
-                    <p className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.12em] text-[var(--color-text-dim)] mb-1">
+                    <p className="font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.12em] text-[var(--color-text-dim)] mb-1">
                       {s.kicker}
                     </p>
                   )}
@@ -102,14 +102,14 @@ export default function WhatWeDo() {
                     {s.body}
                   </p>
                   {s.tagline && (
-                    <p className="font-[family-name:var(--font-body)] uppercase tracking-[0.1em] text-[var(--color-earth-light)] text-xs md:text-sm mt-4">
+                    <p className="font-[family-name:var(--font-tactical-mono)] uppercase tracking-[0.1em] text-[var(--color-earth-light)] text-xs md:text-sm mt-4">
                       {s.tagline}
                     </p>
                   )}
                   {s.link && (
                     <Link
                       href={s.link}
-                      className="inline-block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] mt-4 border-b border-[var(--color-earth-light)]/40 hover:border-[var(--color-earth-light)] transition-colors"
+                      className="inline-block font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] mt-4 border-b border-[var(--color-earth-light)]/40 hover:border-[var(--color-earth-light)] transition-colors"
                     >
                       {s.ctaLabel ?? "Learn more"} &rarr;
                     </Link>

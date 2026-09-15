@@ -49,13 +49,13 @@ export default async function ProjectPage({
         <ProjectVideoPlayer src={project.fullVideo} title={project.title} />
       ) : (
         <div className="h-[70vh] bg-[var(--color-bg-elevated)] border-b border-[var(--color-border)] flex items-center justify-center">
-          <span className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.15em] text-[var(--color-text-dim)]">
+          <span className="font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.15em] text-[var(--color-text-dim)]">
             Opening image / embedded film placeholder
           </span>
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto px-6 md:px-10 py-20 md:py-28">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 py-16 md:py-28">
         {/* Header tag, title block, and the full case-study copy (Brief /
             Role / Approach / Deliverables / Credits) all type out as one
             continuous sequence — see TacticalBriefing. Nav links (Next

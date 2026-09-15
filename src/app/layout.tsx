@@ -1,22 +1,41 @@
-import type { Metadata } from "next";
-import { Share_Tech_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Share_Tech_Mono, Chakra_Petch, Barlow } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-// Share Tech Mono: monospace terminal/tactical-HUD font. Used as the ONE
-// font across the entire site (display AND body) per explicit request —
-// previous attempts (Bebas Neue, then Michroma for display only, Inter for
-// body) left body copy looking like plain prose. This is a genuine identity
-// choice, not a subtle tweak — a monospace terminal font used for long body
-// paragraphs is unusual, but it directly matches the "mission briefing HUD"
-// direction the site has been pushed toward (teletype animation, tactical
-// metadata readouts, etc).
+// Three-tier tactical/HUD type system:
+// - Chakra Petch: headings (h1/h2/h3, section titles) — sharp, geometric,
+//   AAA-game HUD feel.
+// - Share Tech Mono: kickers, section numbers, tags, buttons, metadata —
+//   digital telemetry style. (Same font that was previously used site-wide;
+//   kept here for these elements specifically.)
+// - Barlow: body copy — legible, effortless-reading prose so headings do
+//   the work of commanding attention instead of the paragraphs fighting
+//   for it.
 const shareTechMono = Share_Tech_Mono({
   variable: "--font-share-tech-mono",
   subsets: ["latin"],
   weight: "400",
 });
+
+const chakraPetch = Chakra_Petch({
+  variable: "--font-chakra-petch",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+});
+
+const barlow = Barlow({
+  variable: "--font-barlow",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Krysalis Media | Tactical Media & Production Studio UK",
@@ -37,7 +56,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${shareTechMono.variable} antialiased`}>
+      <body
+        className={`${shareTechMono.variable} ${chakraPetch.variable} ${barlow.variable} antialiased overflow-x-hidden`}
+      >
         <Nav />
         {children}
         <Footer />
