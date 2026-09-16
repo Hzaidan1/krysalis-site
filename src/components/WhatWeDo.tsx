@@ -7,14 +7,13 @@ const SERVICES = [
   {
     num: "01",
     title: "Full Production",
-    body: "We develop and produce original films, campaigns and short-form content around the brief — handling concept development, planning, shooting, direction and post-production.",
+    body: "Concept, planning, direction, filming and post — from first idea to final delivery.",
     tagline: "Concept / Pre-Production / Filming / Direction / Post",
   },
   {
     num: "02",
     title: "Post-Production",
-    kicker: "Already have the footage?",
-    body: "Raw footage doesn't need to start with us to finish with us. We turn supplied footage into finished films, advertisements and social content — building structure, pace, sound and visual identity around the material already available.",
+    body: "Already shot it? We turn supplied footage into finished films and social content.",
     tagline: "Editing / Sound Design / Colour / Motion / Social Cutdowns",
     link: "/post-production",
     ctaLabel: "Explore Post-Production",
@@ -22,14 +21,13 @@ const SERVICES = [
   {
     num: "03",
     title: "Brand Content",
-    body: "Campaign films, product content and social-first media created specifically for tactical, outdoor and performance brands. The aim isn't simply to put a product in frame. It's to create a world in which it belongs.",
+    body: "Campaigns, product films and social content built around the identity of the brand.",
     tagline: "Campaigns / Product Films / Launches / Social Content",
   },
   {
     num: "04",
     title: "Tactical Production Support",
-    kicker: "Beyond the camera.",
-    body: "Practical support for productions working inside the tactical world. From suitable supporting artists and tactical-background performers to kit familiarity, movement rehearsal and visual preparation for camera, Krysalis can help productions build more convincing tactical scenes.",
+    body: "People, kit and practical support for tactical scenes — in front of the camera as well as behind it.",
     tagline: "Supporting Artists / Performance Support / Movement / Kit / Continuity",
     link: "/production-support",
     ctaLabel: "Production Support",
@@ -37,14 +35,13 @@ const SERVICES = [
   {
     num: "05",
     title: "Event & Field Coverage",
-    body: "Coverage for competitions, game days, launches and activations — capturing the people, atmosphere and details around the action rather than simply documenting what happened.",
+    body: "Films and social content captured inside live events, competitions and field environments.",
     tagline: "Event Films / Social Coverage / BTS / Short-Form",
   },
   {
     num: "06",
     title: "Creative Development",
-    kicker: "Before the first frame.",
-    body: "Sometimes the project needs an idea before it needs a camera. We develop concepts, treatments, visual direction and shot structures for productions and campaigns — whether Krysalis produces the finished work or contributes to a wider creative team.",
+    body: "Concepts, treatments and visual direction before the camera starts rolling.",
     tagline: "Concepts / Treatments / Visual Direction / Shot Planning",
   },
 ];
@@ -63,7 +60,7 @@ export default function WhatWeDo() {
           <p className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
             What We Do
           </p>
-          <h2 className="font-[family-name:var(--font-display)] font-semibold uppercase tracking-wide text-3xl md:text-5xl">
+          <h2 className="font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-2xl sm:text-4xl lg:text-5xl">
             Craft, on either side of the lens.
           </h2>
         </motion.div>
@@ -87,11 +84,6 @@ export default function WhatWeDo() {
 
               <div className="grid grid-cols-1 md:grid-cols-[minmax(0,220px)_1fr] gap-3 md:gap-12">
                 <div>
-                  {s.kicker && (
-                    <p className="font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.12em] text-[var(--color-text-dim)] mb-1">
-                      {s.kicker}
-                    </p>
-                  )}
                   <h3 className="font-[family-name:var(--font-display)] font-medium uppercase tracking-wide text-xl md:text-2xl">
                     {s.title}
                   </h3>

@@ -7,7 +7,7 @@ import StaticBackground from "@/components/StaticBackground";
 
 const PILLARS = [
   {
-    title: "Supporting Artists & Performers",
+    title: "Supporting Artists",
     body: "Access to people comfortable wearing and moving in tactical equipment, reducing basic familiarisation time on set.",
   },
   {
@@ -19,7 +19,7 @@ const PILLARS = [
     body: "Sourcing, assembling, and visually preparing authentic, context-appropriate equipment.",
   },
   {
-    title: "Continuity & Visual Support",
+    title: "Continuity",
     body: "Maintaining equipment placement, loadout accuracy, and visual details between takes.",
   },
   {
@@ -45,7 +45,7 @@ export default function ProductionSupportClient() {
         <PageHeader
           kicker="Tactical Production Support"
           title="Helping Build What Happens in Front of the Camera."
-          subtitle="Krysalis grew inside the tactical space before becoming a production studio. That familiarity gives us a useful role when a production needs more than somebody operating the camera. For film, television, commercial and creative productions, we can support the visual and practical preparation of tactical scenes — from finding suitable supporting artists to helping performers become comfortable with the kit, movement and environment required for the shot."
+          subtitle="Krysalis grew inside the tactical space before becoming a production studio — that familiarity is what we bring to film, television, commercial and creative productions that need more than someone operating the camera."
         />
 
         <motion.div

@@ -54,7 +54,7 @@ export default function PostProductionClient() {
         <PageHeader
           kicker="Post-Production"
           title="You've got the footage. Let's find the film."
-          subtitle="Not every Krysalis project starts behind our camera. We work with footage captured by brands, creators, teams and production crews and turn it into finished media with structure, pace and purpose. That can mean professionally shot campaign footage, action cameras, event footage, night vision, thermal or a library of clips that hasn't yet found its final form."
+          subtitle="We turn supplied footage — professional, action-camera, event, night vision or thermal — into finished media with structure, pace and purpose."
         />
 
         <motion.div

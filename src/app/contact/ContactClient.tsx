@@ -125,7 +125,7 @@ export default function ContactClient() {
 
   if (submitted) {
     return (
-      <main className="min-h-screen flex items-center justify-center px-6 relative">
+      <main className="min-h-screen flex items-center justify-center overflow-x-hidden px-6 relative">
         <ReactiveBackground
           src="/videos/bg-prep.mp4"
           frames={FRAMES}

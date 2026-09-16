@@ -29,7 +29,7 @@ const SCENES: Scene[] = [
     range: [0, 0.22],
     kicker: "UK Tactical Media & Production Studio",
     title: "Before the action, there is the story.",
-    body: "Krysalis develops, produces and supports media for the tactical world — from original films and brand content to post-production, event coverage and specialist support for screen productions.",
+    body: "Krysalis creates and supports media for the tactical world — from full production and brand content to post-production and screen production support.",
     buttons: [
       { label: "View Our Work", href: "/work", variant: "solid" },
       { label: "Start a Project", href: "/contact", variant: "outline" },
@@ -244,7 +244,7 @@ export default function ScrollHero() {
                     {scene.kicker}
                   </p>
                 )}
-                <h1 className="relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-[clamp(2rem,6vw,4.5rem)] leading-[1.05] max-w-3xl mb-5">
+                <h1 className="text-tactical-outline tactical-glitch-loop relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-3xl sm:text-5xl lg:text-7xl leading-[1.05] max-w-3xl mb-5">
                   {scene.title}
                   <span
                     aria-hidden="true"

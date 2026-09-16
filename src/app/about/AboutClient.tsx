@@ -12,7 +12,7 @@ const FRAMES = [0.5, 12];
 const PHILOSOPHY = [
   "Atmosphere",
   "Preparation",
-  "Storytelling through small details",
+  "Small details",
   "Controlled pacing",
   "Sound design",
   "The pause before the action",
@@ -70,21 +70,13 @@ export default function AboutClient() {
           className="font-[family-name:var(--font-body)] font-light text-[var(--color-text-dim)] text-base md:text-lg leading-relaxed space-y-5 mb-24"
         >
           <motion.p variants={itemVariants}>
-            Krysalis is an independent UK tactical media and production
-            studio. It began inside the UK airsoft and tactical community,
-            creating the kind of media we wanted to see in the space
-            ourselves. That origin still shapes how we work — familiarity
-            with the equipment, environments, movement and small visual
-            details gives us a perspective a general production crew often
-            has to learn from scratch.
+            Krysalis is a UK tactical media and production studio born from
+            the airsoft and tactical community. That familiarity with the
+            equipment, environments and culture shapes the work we create for
+            brands, events and screen productions.
           </motion.p>
           <motion.p variants={itemVariants}>
-            Today, Krysalis develops original productions, creates content
-            for brands and events, handles post-production and supports
-            wider screen productions working within the tactical space.
-            We&apos;re deliberately small and flexible. The team, equipment
-            and approach can be built around the project rather than forcing
-            every project through the same production model.
+            Small team. Flexible production. Built around the brief.
           </motion.p>
         </motion.div>
 

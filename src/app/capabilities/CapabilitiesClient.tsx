@@ -26,7 +26,7 @@ const SECTIONS = [
   {
     num: "02",
     title: "Post-Production",
-    body: "Your footage. Our treatment. Editing supplied material is a standalone Krysalis service, not an afterthought. We work with professionally captured material, action-camera, field, night-vision, and unconventional footage.",
+    body: "We turn supplied footage into finished films and content — professional, action-camera, field or night-vision material alike.",
     services: [
       "Editing",
       "Sound design",
@@ -43,7 +43,7 @@ const SECTIONS = [
   {
     num: "03",
     title: "Brand Content",
-    body: "A product should belong inside the film, not interrupt it. We develop original media around brand identity and purpose.",
+    body: "Original media built around brand identity — campaigns and product content designed to fit the brand, not just feature it.",
     services: [
       "Product films",
       "Campaign concepts",
@@ -73,7 +73,7 @@ const SECTIONS = [
   {
     num: "05",
     title: "Event & Field Coverage",
-    body: "Capture the environment without getting in its way. Media inside active events and field environments.",
+    body: "Media captured inside live events and field environments, alongside the action as it happens.",
     services: [
       "Event films",
       "Competition coverage",
@@ -87,7 +87,7 @@ const SECTIONS = [
   {
     num: "06",
     title: "Creative Development",
-    body: "Bring us the objective before you bring us the shot list.",
+    body: "Concepts, treatments and visual direction, developed before a camera is booked.",
     services: [
       "Creative concepts",
       "Treatments",
@@ -117,7 +117,7 @@ export default function CapabilitiesClient() {
         <PageHeader
           kicker="Capabilities"
           title="One Studio. Different Ways Into a Project."
-          subtitle="Some projects begin with an idea. Others arrive with footage already shot, a date already booked or a production already underway. Krysalis can build the complete production or contribute the part that's missing."
+          subtitle="Krysalis can build the complete production or contribute the part that's missing."
         />
 
         <div className="space-y-20 md:space-y-24">

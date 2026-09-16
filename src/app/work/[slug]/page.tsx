@@ -44,7 +44,7 @@ export default async function ProjectPage({
   const nextProject = getNextProject(slug);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       {project.fullVideo ? (
         <ProjectVideoPlayer src={project.fullVideo} title={project.title} />
       ) : (

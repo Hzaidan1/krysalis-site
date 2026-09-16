@@ -87,6 +87,38 @@ body::after {
   white-space: nowrap;
 }
 
+/* Periodic idle glitch on the main hero title itself — the transition burst
+   above (.glitch-clone) only fires once when a scene mounts then freezes,
+   which reads as static most of the time. This loops a brief flicker every
+   few seconds so the title stays subtly alive while it's sitting on screen. */
+@keyframes titleGlitchPulse {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+  93% {
+    opacity: 0.82;
+    clip-path: inset(10% 0 62% 0);
+    transform: translate3d(-2px, 0, 0);
+  }
+  95% {
+    opacity: 0.9;
+    clip-path: inset(58% 0 6% 0);
+    transform: translate3d(2px, 0, 0);
+  }
+  97% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+.tactical-glitch-loop {
+  animation: titleGlitchPulse 5s steps(1, end) infinite;
+}
+
 @keyframes glitchSweep {
   0% {
     opacity: 0;
