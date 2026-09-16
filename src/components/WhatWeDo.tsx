@@ -63,7 +63,7 @@ export default function WhatWeDo() {
           <p className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
             What We Do
           </p>
-          <h2 className="font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-2xl sm:text-4xl lg:text-5xl">
+          <h2 className="font-[family-name:var(--font-display)] font-semibold uppercase tracking-wide text-3xl md:text-5xl">
             Craft, on either side of the lens.
           </h2>
         </motion.div>
