@@ -244,30 +244,9 @@ export default function ScrollHero() {
                     {scene.kicker}
                   </p>
                 )}
-                <h1 className="text-tactical-outline tactical-glitch-loop relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-3xl sm:text-5xl lg:text-7xl leading-[1.05] max-w-3xl mb-5">
+                <h1 className="text-tactical-bevel tactical-static-burst relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-3xl sm:text-5xl lg:text-7xl leading-[1.05] max-w-3xl mb-5">
                   {scene.title}
-                  <span
-                    aria-hidden="true"
-                    className="glitch-clone"
-                    style={{ color: "#ff5b5b", transform: "translateX(-3px)" }}
-                  >
-                    {scene.title}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="glitch-clone"
-                    style={{
-                      color: "#5bd0ff",
-                      transform: "translateX(3px)",
-                      animationDelay: "0.02s",
-                    }}
-                  >
-                    {scene.title}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="glitch-sweep absolute inset-x-0 top-1/2 h-[2px] bg-[var(--color-earth-light)]"
-                  />
+                  <span aria-hidden="true" className="tactical-static-overlay" />
                 </h1>
                 {scene.body && (
                   <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] max-w-md text-sm md:text-base mb-9">
