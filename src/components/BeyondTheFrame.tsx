@@ -16,7 +16,7 @@ export default function BeyondTheFrame() {
         <p className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
           Beyond the Frame
         </p>
-        <h2 className="font-[family-name:var(--font-display)] font-semibold uppercase tracking-wide text-3xl md:text-5xl mb-8 leading-tight">
+        <h2 className="font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-2xl sm:text-4xl lg:text-5xl mb-8 leading-tight">
           Production isn&apos;t always just about the camera.
         </h2>
         <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-10">

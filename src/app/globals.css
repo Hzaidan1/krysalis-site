@@ -154,3 +154,11 @@ body::after {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
 }
+
+/* Tactical text outline — utility only, not yet applied anywhere. Waiting
+   on the rest of the "Title Outline & Glitch Effect" brief (message was cut
+   off) to know which headings it should go on and what the glitch part
+   should actually do. */
+.text-tactical-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+}
