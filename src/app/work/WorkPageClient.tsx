@@ -20,7 +20,7 @@ export default function WorkPageClient() {
   const [filter, setFilter] = useState<Filter>("All");
 
   return (
-    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-40">
       <StaticBackground src="/images/work-bg-still.jpg" grayscale={false} />
       <div className="relative z-10 w-full max-w-6xl">
         <PageHeader
@@ -87,7 +87,7 @@ export default function WorkPageClient() {
                     </div>
                   </div>
                   <div className="p-6 md:p-7">
-                    <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl mb-2 flex items-center gap-2 group-hover:text-[var(--color-earth-light)] transition-colors">
+                    <h3 className="font-[family-name:var(--font-display)] text-[20px] md:text-[24px] mb-2 flex items-center gap-2 group-hover:text-[var(--color-earth-light)] transition-colors">
                       {p.client} / {p.title}
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 group-hover:translate-x-1 transform">
                         &rarr;
@@ -103,8 +103,8 @@ export default function WorkPageClient() {
           </AnimatePresence>
         </div>
 
-        <div className="mt-24 pt-16 border-t border-[var(--color-border)] flex flex-col items-center text-center gap-6">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl">
+        <div className="mt-24 md:mt-32 flex flex-col items-center text-center gap-6">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[30px]">
             Have a story worth telling?
           </h2>
           <Button label="Start a Project" href="/contact" variant="solid" />

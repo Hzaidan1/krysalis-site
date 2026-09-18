@@ -67,7 +67,7 @@ export default function AboutClient() {
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
           variants={sectionVariants}
-          className="font-[family-name:var(--font-body)] font-light text-[var(--color-text-dim)] text-base md:text-lg leading-relaxed space-y-5 mb-24"
+          className="font-[family-name:var(--font-body)] font-light text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] max-w-[55ch] space-y-5 mb-24 md:mb-32"
         >
           <motion.p variants={itemVariants}>
             Krysalis is a UK tactical media and production studio born from
@@ -85,22 +85,18 @@ export default function AboutClient() {
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
           variants={sectionVariants}
-          className="mb-24"
+          className="mb-24 md:mb-32"
         >
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-10">
+          <h2 className="font-[family-name:var(--font-display)] text-[28px] sm:text-[38px] lg:text-[48px] mb-12 md:mb-16">
             Creative Philosophy
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7">
             {PHILOSOPHY.map((p, i) => (
-              <motion.div
-                key={p}
-                variants={itemVariants}
-                className="group flex items-center gap-4 border-b border-[var(--color-border)] hover:border-[var(--color-earth-light)]/60 pb-4 transition-colors duration-300"
-              >
+              <motion.div key={p} variants={itemVariants} className="group flex items-center gap-4">
                 <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] text-sm w-6 transition-transform duration-300 group-hover:translate-x-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="font-[family-name:var(--font-tactical-mono)] tracking-wide text-sm md:text-base">
+                <p className="font-[family-name:var(--font-tactical-mono)] tracking-wide text-[16px] sm:text-[17px]">
                   {p}
                 </p>
               </motion.div>
@@ -113,37 +109,34 @@ export default function AboutClient() {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
-          className="mb-24"
+          className="mb-24 md:mb-32"
         >
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-12">
+          <h2 className="font-[family-name:var(--font-display)] text-[28px] sm:text-[38px] lg:text-[48px] mb-14">
             How We Work
           </h2>
-          <div className="relative">
-            <div className="absolute top-5 left-0 right-0 h-px bg-[var(--color-border)] hidden sm:block" />
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-6">
-              {PROCESS.map((s) => (
-                <motion.div
-                  key={s.step}
-                  variants={itemVariants}
-                  className="relative flex flex-col items-start sm:items-center text-left sm:text-center"
-                >
-                  <span className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-earth-light)]/60 bg-[var(--color-bg)] font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] text-sm mb-4">
-                    {s.step}
-                  </span>
-                  <h4 className="font-[family-name:var(--font-display)] text-lg md:text-xl mb-2">
-                    {s.title}
-                  </h4>
-                  <p className="font-[family-name:var(--font-body)] tracking-wide text-xs md:text-sm text-[var(--color-text-dim)] leading-relaxed">
-                    {s.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-10 gap-x-6">
+            {PROCESS.map((s) => (
+              <motion.div
+                key={s.step}
+                variants={itemVariants}
+                className="flex flex-col items-start sm:items-center text-left sm:text-center"
+              >
+                <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] text-sm mb-3">
+                  {s.step}
+                </span>
+                <h4 className="font-[family-name:var(--font-display)] text-[20px] sm:text-[22px] mb-2">
+                  {s.title}
+                </h4>
+                <p className="font-[family-name:var(--font-body)] tracking-wide text-[15px] sm:text-[16px] leading-[1.6] text-[var(--color-text-dim)]">
+                  {s.desc}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
-        <div className="pt-4 flex flex-col items-center text-center gap-6 border-t border-[var(--color-border)] pt-16">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl">
+        <div className="flex flex-col items-center text-center gap-6">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[30px]">
             Ready to work together?
           </h2>
           <Button label="Work With Krysalis" href="/contact" variant="solid" />

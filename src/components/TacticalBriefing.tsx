@@ -7,6 +7,8 @@ import type { Project } from "@/lib/projects";
 // --- tuning ---
 const CHAR_INTERVAL_MS = 42; // typing speed, per character
 const LINE_PAUSE_MS = 380; // pause after a line completes, before the next starts
+const SFX_ACTIVE_MS = 2200; // keyboard clicks only play for roughly this long from the start
+const SFX_FADE_MS = 200; // then fade out over this long and stay silent for the rest
 
 type Entry =
   | { kind: "tag"; text: string }
@@ -49,7 +51,7 @@ function useTypingClick() {
     };
   }, []);
 
-  return function playClick() {
+  return function playClick(volumeMultiplier: number = 1) {
     const ctx = ensureContext();
     if (!ctx) return;
     try {
@@ -77,7 +79,9 @@ function useTypingClick() {
       presenceBoost.gain.value = 6;
 
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.55, now);
+      // base level cut by ~12dB from the original (0.55 -> ~0.12) — it was
+      // prominent enough to consciously listen to instead of read the page
+      noiseGain.gain.setValueAtTime(0.12 * volumeMultiplier, now);
       noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + noiseDuration);
 
       noise.connect(highpass);
@@ -92,7 +96,7 @@ function useTypingClick() {
       thump.frequency.value = 140 + Math.random() * 60;
       const thumpGain = ctx.createGain();
       const thumpStart = now + 0.002;
-      thumpGain.gain.setValueAtTime(0.13, thumpStart);
+      thumpGain.gain.setValueAtTime(0.03 * volumeMultiplier, thumpStart);
       thumpGain.gain.exponentialRampToValueAtTime(0.0001, thumpStart + 0.045);
       thump.connect(thumpGain);
       thumpGain.connect(ctx.destination);
@@ -113,11 +117,11 @@ function entryClassName(entry: Entry): string {
     case "tag":
       return "font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-dim)] mb-4 block";
     case "title":
-      return "font-[family-name:var(--font-display)] text-3xl md:text-5xl leading-tight mb-10 block";
+      return "font-[family-name:var(--font-display)] text-[28px] sm:text-[38px] lg:text-[48px] leading-[1.15] mb-12 block";
     case "heading":
-      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] uppercase tracking-[0.16em] text-sm mb-3 mt-10 block";
+      return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] uppercase tracking-[0.16em] text-sm mb-3 mt-12 block";
     case "prose":
-      return "font-[family-name:var(--font-body)] text-[var(--color-text-dim)] text-sm leading-relaxed max-w-2xl mb-2 block";
+      return "font-[family-name:var(--font-body)] text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] max-w-[55ch] mb-2 block";
     case "listItem":
       return "font-[family-name:var(--font-tactical-mono)] text-[var(--color-text)] text-sm mb-1 block";
     case "credits":
@@ -182,6 +186,10 @@ export default function TacticalBriefing({
 
   const [entryIndex, setEntryIndex] = useState(0);
   const [charCount, setCharCount] = useState(0);
+  // Wall-clock time the sequence started, used to gate the SFX to a brief
+  // window at the start — the visual typing continues for the whole case
+  // study, but the click sound is a micro-interaction, not a soundtrack.
+  const sfxStartRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (entryIndex >= entries.length) return;
@@ -197,7 +205,18 @@ export default function TacticalBriefing({
 
     const t = setTimeout(() => {
       setCharCount((c) => c + 1);
-      playClick();
+
+      if (sfxStartRef.current === null) {
+        sfxStartRef.current = performance.now();
+      }
+      const elapsed = performance.now() - sfxStartRef.current;
+      if (elapsed <= SFX_ACTIVE_MS) {
+        playClick(1);
+      } else if (elapsed <= SFX_ACTIVE_MS + SFX_FADE_MS) {
+        const fadeProgress = (elapsed - SFX_ACTIVE_MS) / SFX_FADE_MS;
+        playClick(1 - fadeProgress);
+      }
+      // past the fade window — stay silent for the rest of the sequence
     }, CHAR_INTERVAL_MS);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -253,7 +272,7 @@ export default function TacticalBriefing({
             nodes.push(
               <div
                 key={i}
-                className="flex justify-between items-center pt-10 mt-10 border-t border-[var(--color-border)] mb-20"
+                className="flex justify-between items-center mt-16 mb-20"
               >
                 {rowIndices.map((idx) => (
                   <span key={idx} className={entryClassName(entries[idx])}>

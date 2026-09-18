@@ -24,7 +24,7 @@ const FRAMES = [1, 4.5, 8, 11.5];
 const labelClass =
   "block font-[family-name:var(--font-tactical-mono)] text-xs md:text-[13px] uppercase tracking-[0.18em] text-[var(--color-text-dim)] mb-3 transition-colors duration-300 group-focus-within:text-[var(--color-earth-light)]";
 const inputClass =
-  "w-full bg-[var(--color-bg-elevated)]/70 border border-[rgba(212,184,150,0.3)] rounded-sm px-5 py-4 outline-none font-[family-name:var(--font-body)] text-lg md:text-xl placeholder:text-[var(--color-text-dim)]/40 transition-all duration-300 focus:border-[var(--color-earth-light)] focus:bg-[var(--color-bg-elevated)]/90 focus:shadow-[0_0_0_1px_rgba(212,184,150,0.3),0_0_28px_rgba(212,184,150,0.16)]";
+  "w-full bg-[var(--color-bg-elevated)]/70 border border-[rgba(212,184,150,0.3)] rounded-sm px-5 py-4 outline-none font-[family-name:var(--font-body)] text-[17px] md:text-[18px] placeholder:text-[var(--color-text-dim)]/40 transition-all duration-300 focus:border-[var(--color-earth-light)] focus:bg-[var(--color-bg-elevated)]/90 focus:shadow-[0_0_0_1px_rgba(212,184,150,0.3),0_0_28px_rgba(212,184,150,0.16)]";
 
 const fieldContainerVariants = {
   hidden: {},
@@ -137,10 +137,10 @@ export default function ContactClient() {
           animate={{ opacity: 1, y: 0 }}
           className="relative z-10 text-center max-w-md"
         >
-          <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl mb-4">
+          <h1 className="font-[family-name:var(--font-display)] text-[28px] sm:text-[38px] mb-4">
             Brief Received
           </h1>
-          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)]">
+          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6]">
             We&apos;ll take a look and come back to you directly.
           </p>
         </motion.div>
@@ -149,7 +149,7 @@ export default function ContactClient() {
   }
 
   return (
-    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-40">
       <ReactiveBackground
         src="/videos/bg-prep.mp4"
         frames={FRAMES}

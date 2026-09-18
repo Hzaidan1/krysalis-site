@@ -62,20 +62,16 @@ export default function PostProductionClient() {
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
           variants={sectionVariants}
-          className="mb-24"
+          className="mb-24 md:mb-32"
         >
-          <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl mb-8">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[32px] mb-10">
             What&apos;s Included
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
             {CAPABILITIES.map((c) => (
-              <motion.div
-                key={c}
-                variants={itemVariants}
-                className="group flex items-center gap-3 border-b border-[var(--color-border)] hover:border-[var(--color-earth-light)]/60 pb-4 transition-colors duration-300"
-              >
-                <span className="w-1.5 h-1.5 bg-[var(--color-earth-light)] shrink-0 transition-transform duration-300 group-hover:scale-150" />
-                <p className="font-[family-name:var(--font-tactical-mono)] tracking-wide text-sm md:text-base text-[var(--color-text-dim)]">
+              <motion.div key={c} variants={itemVariants} className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 bg-[var(--color-earth-light)] shrink-0" />
+                <p className="font-[family-name:var(--font-tactical-mono)] tracking-wide text-[15px] sm:text-[16px] text-[var(--color-text-dim)]">
                   {c}
                 </p>
               </motion.div>
@@ -88,12 +84,12 @@ export default function PostProductionClient() {
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
           variants={sectionVariants}
-          className="mb-24 border-t border-[var(--color-border)] pt-16"
+          className="mb-24 md:mb-32"
         >
-          <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl mb-6">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[32px] mb-6">
             From One Master to a Content System
           </h2>
-          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-sm md:text-base leading-relaxed max-w-2xl">
+          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] max-w-[55ch]">
             A project doesn&apos;t necessarily end with one finished film. We
             can develop shorter edits, alternate formats and platform-specific
             versions from the same footage so the material works harder
@@ -101,11 +97,11 @@ export default function PostProductionClient() {
           </p>
         </motion.div>
 
-        <div className="border-t border-[var(--color-border)] pt-16 flex flex-col items-center text-center gap-6">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl">
+        <div className="flex flex-col items-center text-center gap-6">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[32px]">
             Send What You Have.
           </h2>
-          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-sm md:text-base leading-relaxed max-w-xl">
+          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] max-w-[55ch]">
             You don&apos;t need to organise everything into a polished brief
             before contacting us. Send the footage, tell us where it needs to
             end up and show us anything that helps explain the direction.

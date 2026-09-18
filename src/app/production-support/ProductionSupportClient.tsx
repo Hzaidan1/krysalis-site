@@ -44,8 +44,8 @@ export default function ProductionSupportClient() {
       <div className="relative z-10 w-full max-w-3xl">
         <PageHeader
           kicker="Tactical Production Support"
-          title="Helping Build What Happens in Front of the Camera."
-          subtitle="Krysalis grew inside the tactical space before becoming a production studio — that familiarity is what we bring to film, television, commercial and creative productions that need more than someone operating the camera."
+          title="Supporting What Happens in Front of the Camera."
+          subtitle="Krysalis provides performers, preparation and practical visual support for tactical scenes across film, commercial and creative production."
         />
 
         <motion.div
@@ -53,18 +53,18 @@ export default function ProductionSupportClient() {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
-          className="mb-20"
+          className="mb-24 md:mb-32"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
             {PILLARS.map((p, i) => (
               <motion.div key={p.title} variants={itemVariants}>
                 <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth-light)] text-sm">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-lg md:text-xl mt-2 mb-2">
+                <h3 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-[22px] sm:text-[24px] mt-3 mb-3">
                   {p.title}
                 </h3>
-                <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-sm text-[var(--color-text-dim)] leading-relaxed">
+                <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[16px] leading-[1.6] text-[var(--color-text-dim)]">
                   {p.body}
                 </p>
               </motion.div>
@@ -72,8 +72,8 @@ export default function ProductionSupportClient() {
           </div>
         </motion.div>
 
-        <div className="border-t border-[var(--color-border)] pt-10 mb-20">
-          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-xs text-[var(--color-text-dim)] leading-relaxed max-w-2xl">
+        <div className="mb-24">
+          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-xs text-[var(--color-text-dim)] leading-[1.6] max-w-[60ch]">
             Authenticity and safety sometimes require disciplines outside our
             scope. Where a production requires military technical advice,
             armoury services, specialist weapons instruction, stunt

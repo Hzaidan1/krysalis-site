@@ -10,93 +10,46 @@ const SECTIONS = [
   {
     num: "01",
     title: "Video Production",
-    body: "Original production from concept through delivery. We develop the creative approach, organise the shoot and produce the finished media around the needs of the project.",
-    services: [
-      "Concept development",
-      "Treatments",
-      "Pre-production",
-      "Direction",
-      "Cinematography",
-      "Brand films",
-      "Product content",
-      "Social-first production",
-      "Post-production",
-    ],
+    body: "Original production from concept through delivery.",
+    keywords: ["Concept Development", "Pre-Production", "Direction", "Cinematography", "Post"],
   },
   {
     num: "02",
     title: "Post-Production",
-    body: "We turn supplied footage into finished films and content — professional, action-camera, field or night-vision material alike.",
-    services: [
-      "Editing",
-      "Sound design",
-      "Colour treatment",
-      "Motion graphics",
-      "Captions",
-      "Social cutdowns",
-      "Platform formatting",
-      "Existing campaign assets",
-    ],
+    body: "Supplied footage turned into finished films and content.",
+    keywords: ["Editing", "Sound Design", "Colour", "Motion Graphics", "Social Cutdowns"],
     link: "/post-production",
     ctaLabel: "More About Post-Production",
   },
   {
     num: "03",
     title: "Brand Content",
-    body: "Original media built around brand identity — campaigns and product content designed to fit the brand, not just feature it.",
-    services: [
-      "Product films",
-      "Campaign concepts",
-      "Brand films",
-      "Launch content",
-      "Social reels",
-      "Content series",
-      "Collaborative productions",
-    ],
+    body: "Original media built around brand identity, not just featuring it.",
+    keywords: ["Campaigns", "Product Films", "Launch Content", "Social Reels", "Content Series"],
   },
   {
     num: "04",
     title: "Tactical Production Support",
-    body: "Specialist support in front of the lens as well as behind it. Practical assistance in building visual performance around tactical scenes.",
-    services: [
-      "Tactical-background performers",
-      "Supporting artists",
-      "Performer preparation",
-      "Movement rehearsal for camera",
-      "Kit familiarity",
-      "Loadout preparation",
-      "Equipment continuity",
-      "Background action",
-      "On-set creative support",
+    body: "Specialist support in front of the lens as well as behind it.",
+    keywords: [
+      "Supporting Artists",
+      "Performer Preparation",
+      "Movement Rehearsal",
+      "Kit & Loadout",
+      "On-Set Support",
     ],
   },
   {
     num: "05",
     title: "Event & Field Coverage",
-    body: "Media captured inside live events and field environments, alongside the action as it happens.",
-    services: [
-      "Event films",
-      "Competition coverage",
-      "Game-day coverage",
-      "Launches",
-      "Activations",
-      "Behind-the-scenes",
-      "Social deliverables",
-    ],
+    body: "Media captured inside live events and field environments.",
+    keywords: ["Event Films", "Competition Coverage", "Launches", "Activations", "Behind-the-Scenes"],
   },
   {
     num: "06",
     title: "Creative Development",
-    body: "Concepts, treatments and visual direction, developed before a camera is booked.",
-    services: [
-      "Creative concepts",
-      "Treatments",
-      "Campaign direction",
-      "Visual references",
-      "Shot structures",
-      "Content planning",
-      "Narrative development",
-    ],
+    body: "Concepts and direction developed before a camera is booked.",
+    keywords: ["Creative Concepts", "Treatments", "Campaign Direction", "Visual References", "Shot Structures"],
   },
 ];
 
@@ -105,13 +58,13 @@ const sectionVariants = {
   show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
 };
 const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] as const } },
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
 export default function CapabilitiesClient() {
   return (
-    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-40">
       <StaticBackground src="/images/work-bg-still.jpg" grayscale />
       <div className="relative z-10 w-full max-w-4xl">
         <PageHeader
@@ -120,7 +73,7 @@ export default function CapabilitiesClient() {
           subtitle="Krysalis can build the complete production or contribute the part that's missing."
         />
 
-        <div className="space-y-20 md:space-y-24">
+        <div className="space-y-16 md:space-y-20">
           {SECTIONS.map((s) => (
             <motion.div
               key={s.num}
@@ -128,48 +81,46 @@ export default function CapabilitiesClient() {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               variants={sectionVariants}
-              className="border-t border-[var(--color-border)] pt-10"
             >
-              <div className="flex items-start gap-4 mb-4">
-                <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth)] text-lg">
+              <motion.div variants={itemVariants} className="flex items-baseline gap-4 mb-3">
+                <span className="font-[family-name:var(--font-tactical-mono)] text-[var(--color-earth)] text-sm">
                   {s.num}
                 </span>
-                <h2 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-2xl md:text-3xl">
+                <h2 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-[22px] md:text-[26px]">
                   {s.title}
                 </h2>
-              </div>
-              <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-sm md:text-base leading-relaxed max-w-2xl mb-8">
+              </motion.div>
+              <motion.p
+                variants={itemVariants}
+                className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] max-w-[50ch] mb-3"
+              >
                 {s.body}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 mb-6">
-                {s.services.map((item) => (
-                  <motion.div
-                    key={item}
-                    variants={itemVariants}
-                    className="flex items-center gap-3 text-sm text-[var(--color-text-dim)]"
-                  >
-                    <span className="w-1 h-1 bg-[var(--color-earth-light)] shrink-0" />
-                    <span className="font-[family-name:var(--font-tactical-mono)] tracking-wide">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
+              </motion.p>
+              <motion.p
+                variants={itemVariants}
+                className="font-[family-name:var(--font-tactical-mono)] text-xs sm:text-sm tracking-[0.06em] text-[var(--color-earth-light)]/80"
+              >
+                {s.keywords.join(" \u00b7 ")}
+              </motion.p>
               {s.link && (
-                <Link
-                  href={s.link}
-                  className="inline-block font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] border-b border-[var(--color-earth-light)]/40 hover:border-[var(--color-earth-light)] transition-colors"
-                >
-                  {s.ctaLabel} &rarr;
-                </Link>
+                <motion.div variants={itemVariants}>
+                  <Link
+                    href={s.link}
+                    className="inline-block font-[family-name:var(--font-tactical-mono)] text-xs uppercase tracking-[0.12em] text-[var(--color-earth-light)] border-b border-[var(--color-earth-light)]/40 hover:border-[var(--color-earth-light)] transition-colors mt-4"
+                  >
+                    {s.ctaLabel} &rarr;
+                  </Link>
+                </motion.div>
               )}
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-24 pt-16 border-t border-[var(--color-border)] flex flex-col items-center text-center gap-3">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl">
+        <div className="mt-24 md:mt-32 flex flex-col items-center text-center gap-3">
+          <h2 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-[24px] sm:text-[30px]">
             Don&apos;t See Your Project in a Box?
           </h2>
-          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] mb-6">
+          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] mb-6">
             Good. Tell us what it needs.
           </p>
           <Button label="Start a Project" href="/contact" variant="solid" />

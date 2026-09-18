@@ -5,26 +5,23 @@ import Button from "@/components/Button";
 
 export default function BeyondTheFrame() {
   return (
-    <section className="w-full flex items-center justify-center bg-[var(--color-bg)] px-6 md:px-10 py-24 md:py-32 border-t border-[var(--color-border)]">
+    <div className="w-full flex items-center justify-center bg-[var(--color-bg)] px-4 sm:px-6 lg:px-10 py-20 md:py-28">
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className="w-full max-w-3xl mx-auto text-center"
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        className="w-full max-w-xl mx-auto text-center"
       >
-        <p className="font-[family-name:var(--font-tactical-mono)] text-xs tracking-[0.3em] uppercase text-[var(--color-earth-light)] mb-4">
-          Beyond the Frame
-        </p>
-        <h2 className="font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-2xl sm:text-4xl lg:text-5xl mb-6 leading-tight">
+        <h2 className="font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-[24px] sm:text-[30px] mb-5">
           More than a camera crew.
         </h2>
-        <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-sm md:text-base leading-relaxed max-w-xl mx-auto mb-10">
-          Krysalis can support tactical scenes with performers, kit
-          preparation, movement rehearsal and on-set creative support.
+        <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] mb-8">
+          Performers, kit preparation, movement rehearsal and practical
+          support for tactical productions.
         </p>
         <Button label="Explore Production Support" href="/production-support" variant="outline" />
       </motion.div>
-    </section>
+    </div>
   );
 }

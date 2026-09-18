@@ -244,12 +244,14 @@ export default function ScrollHero() {
                     {scene.kicker}
                   </p>
                 )}
-                <h1 className="text-tactical-bevel tactical-static-burst relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-3xl sm:text-5xl lg:text-7xl leading-[1.05] max-w-3xl mb-5">
+                <h1 className="text-tactical-bevel tactical-static-burst relative font-[family-name:var(--font-display)] font-bold uppercase tracking-wide text-[34px] sm:text-[58px] lg:text-[84px] leading-[1.05] max-w-3xl mb-6">
                   {scene.title}
-                  <span aria-hidden="true" className="tactical-static-overlay" />
+                  <span aria-hidden="true" className="tactical-static-overlay">
+                    {scene.title}
+                  </span>
                 </h1>
                 {scene.body && (
-                  <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] max-w-md text-sm md:text-base mb-9">
+                  <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] max-w-[52ch] text-[16px] sm:text-[17px] leading-[1.6] mb-10">
                     {scene.body}
                   </p>
                 )}

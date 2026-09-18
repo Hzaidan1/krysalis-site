@@ -16,7 +16,7 @@ export default function PageHeader({
   backdrop?: string;
 }) {
   return (
-    <div className="relative mb-16 md:mb-24 -mx-4 sm:-mx-6 lg:-mx-10 px-4 sm:px-6 lg:px-10 pt-4 pb-16 md:pb-20 overflow-hidden">
+    <div className="relative mb-20 md:mb-32 -mx-4 sm:-mx-6 lg:-mx-10 px-4 sm:px-6 lg:px-10 pt-4 pb-20 md:pb-28 overflow-hidden">
       {backdrop && (
         <>
           <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -52,18 +52,18 @@ export default function PageHeader({
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="relative"
       >
-        <p className="font-[family-name:var(--font-tactical-mono)] tracking-[0.3em] uppercase text-[var(--color-earth-light)] text-xs sm:text-sm mb-3">
+        <p className="font-[family-name:var(--font-tactical-mono)] tracking-[0.3em] uppercase text-[var(--color-earth-light)] text-xs sm:text-sm mb-4">
           {kicker}
         </p>
-        <h1 className="font-[family-name:var(--font-display)] uppercase tracking-wide font-bold text-3xl sm:text-5xl lg:text-7xl leading-[1.05] sm:leading-[0.95] mb-5">
+        <h1 className="font-[family-name:var(--font-display)] uppercase tracking-wide font-bold text-[28px] sm:text-[38px] lg:text-[48px] leading-[1.1] mb-6">
           {title}
         </h1>
         {subtitle && (
-          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] max-w-lg text-base md:text-lg">
+          <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] max-w-[55ch] text-[16px] sm:text-[17px] leading-[1.6]">
             {subtitle}
           </p>
         )}
-        <div className="w-16 h-[2px] bg-[var(--color-earth-light)] mt-8" />
+        <div className="w-16 h-[2px] bg-[var(--color-earth-light)] mt-10" />
       </motion.div>
     </div>
   );
