@@ -43,7 +43,7 @@ export default function PostProductionClient() {
   }, []);
 
   return (
-    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-40">
       <ReactiveBackground
         src="/videos/bg-contact-film.mp4"
         frames={BG_FRAMES}
@@ -64,7 +64,7 @@ export default function PostProductionClient() {
           variants={sectionVariants}
           className="mb-24 md:mb-32"
         >
-          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[32px] mb-10">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[30px] mb-10">
             What&apos;s Included
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
@@ -86,7 +86,7 @@ export default function PostProductionClient() {
           variants={sectionVariants}
           className="mb-24 md:mb-32"
         >
-          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[32px] mb-6">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[30px] mb-6">
             From One Master to a Content System
           </h2>
           <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] max-w-[55ch]">
@@ -98,7 +98,7 @@ export default function PostProductionClient() {
         </motion.div>
 
         <div className="flex flex-col items-center text-center gap-6">
-          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[32px]">
+          <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[30px]">
             Send What You Have.
           </h2>
           <p className="font-[family-name:var(--font-body)] font-light tracking-wide text-[var(--color-text-dim)] text-[16px] sm:text-[17px] leading-[1.6] max-w-[55ch]">

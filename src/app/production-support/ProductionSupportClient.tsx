@@ -39,7 +39,7 @@ const itemVariants = {
 
 export default function ProductionSupportClient() {
   return (
-    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-40">
       <StaticBackground src="/images/work-bg-still.jpg" grayscale />
       <div className="relative z-10 w-full max-w-3xl">
         <PageHeader

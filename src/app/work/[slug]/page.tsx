@@ -55,7 +55,7 @@ export default async function ProjectPage({
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 py-20 md:py-32">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 pt-20 pb-24 md:pb-40">
         {/* Header tag, title block, and the full case-study copy (Brief /
             Role / Approach / Deliverables / Credits) all type out as one
             continuous sequence — see TacticalBriefing. Nav links (Next

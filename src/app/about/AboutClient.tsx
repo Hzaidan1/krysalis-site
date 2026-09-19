@@ -52,7 +52,7 @@ const itemVariants = {
 
 export default function AboutClient() {
   return (
-    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-32">
+    <main className="min-h-screen w-full flex justify-center overflow-x-hidden px-4 sm:px-6 lg:px-10 pt-32 md:pt-36 pb-24 md:pb-40">
       <ReactiveBackground
         src="/videos/bg-prep.mp4"
         frames={FRAMES}
