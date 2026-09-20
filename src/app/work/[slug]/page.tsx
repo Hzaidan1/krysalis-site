@@ -4,6 +4,11 @@ import { getProjectBySlug, getNextProject } from "@/lib/projects";
 import ProjectVideoPlayer from "@/components/ProjectVideoPlayer";
 import TacticalBriefing from "@/components/TacticalBriefing";
 
+// Same reasoning as the Work grid page — without this, edits made in
+// Sanity wouldn't appear on an already-published project's page until the
+// next redeploy.
+export const revalidate = 60;
+
 export async function generateMetadata({
   params,
 }: {
