@@ -188,6 +188,13 @@ export default function TacticalBriefing({
   const [entryIndex, setEntryIndex] = useState(0);
   const [charCount, setCharCount] = useState(0);
   const sfxStartRef = useRef<number | null>(null);
+  // Text reveals at CHAR_INTERVAL_MS (fast — 10ms), but firing a click on
+  // every single character at that rate sounds like a buzz, not typing.
+  // This tracks the last time a click actually played so they're spaced
+  // out to a normal keystroke cadence regardless of how fast the text itself
+  // is revealing.
+  const lastClickAtRef = useRef<number>(0);
+  const CLICK_MIN_GAP_MS = 70;
 
   useEffect(() => {
     if (entryIndex >= entries.length) return;
@@ -207,11 +214,17 @@ export default function TacticalBriefing({
       if (sfxStartRef.current === null) {
         sfxStartRef.current = performance.now();
       }
-      const elapsed = performance.now() - sfxStartRef.current;
-      if (elapsed <= SFX_ACTIVE_MS) {
-        playClick(1);
-      } else if (elapsed <= SFX_ACTIVE_MS + SFX_FADE_MS) {
-        playClick(1 - (elapsed - SFX_ACTIVE_MS) / SFX_FADE_MS);
+      const now = performance.now();
+      const elapsed = now - sfxStartRef.current;
+      const sinceLastClick = now - lastClickAtRef.current;
+      if (sinceLastClick >= CLICK_MIN_GAP_MS) {
+        if (elapsed <= SFX_ACTIVE_MS) {
+          playClick(1);
+          lastClickAtRef.current = now;
+        } else if (elapsed <= SFX_ACTIVE_MS + SFX_FADE_MS) {
+          playClick(1 - (elapsed - SFX_ACTIVE_MS) / SFX_FADE_MS);
+          lastClickAtRef.current = now;
+        }
       }
     }, CHAR_INTERVAL_MS);
     return () => clearTimeout(t);
