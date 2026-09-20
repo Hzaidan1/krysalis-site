@@ -108,14 +108,14 @@ export const project = defineType({
       title: "Preview Video (grid card)",
       type: "file",
       description: "Short, muted, looping clip for the Work grid card. Should already be 16:9.",
-      options: { accept: "video/mp4" },
+      options: { accept: "video/*" },
     }),
     defineField({
       name: "fullVideo",
       title: "Full Video (project page)",
       type: "file",
       description: "The complete clip with sound, shown on the project's own page.",
-      options: { accept: "video/mp4" },
+      options: { accept: "video/*" },
     }),
     defineField({
       name: "order",
