@@ -23,6 +23,18 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // The "email" field only had a non-empty check above, same as every
+    // other field — the client's type="email" input gives basic browser
+    // validation, but that's bypassable (disabled JS, a bot posting
+    // directly to this endpoint), so it needs its own real check here too.
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(String(data.email).trim())) {
+      return NextResponse.json(
+        { ok: false, error: "Invalid email address" },
+        { status: 400 }
+      );
+    }
+
     const apiKey = process.env.RESEND_API_KEY;
     const toEmail = process.env.CONTACT_TO_EMAIL || "admin@krysalismedia.co.uk";
 
@@ -53,7 +65,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Krysalis Media <admin@krysalismedia.co.uk>",
+        from: "Krysalis Website <noreply@krysalismedia.co.uk>",
         to: [toEmail],
         reply_to: data.email,
         subject: `New project enquiry from ${data.name}`,

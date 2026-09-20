@@ -114,10 +114,28 @@ export default function ContactClient() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error("failed");
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        // Validation errors (400) are the user's to fix — show them
+        // plainly. Anything else (500/502, a network failure) is on our
+        // end, so the generic message + Instagram fallback still applies.
+        if (res.status === 400 && body?.error === "Invalid email address") {
+          throw new Error("Please double-check your email address — it doesn't look valid.");
+        }
+        if (res.status === 400 && typeof body?.error === "string") {
+          throw new Error("Please fill in every required field before sending.");
+        }
+        throw new Error(
+          "Something went wrong sending your message — please try again or DM us on Instagram."
+        );
+      }
       setSubmitted(true);
-    } catch {
-      setError("Something went wrong sending your message — please try again or DM us on Instagram.");
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong sending your message — please try again or DM us on Instagram."
+      );
     } finally {
       setSending(false);
     }
