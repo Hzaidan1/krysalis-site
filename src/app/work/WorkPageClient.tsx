@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import StaticBackground from "@/components/StaticBackground";
-import { PROJECTS, type Project, type FilterCategory } from "@/lib/projects";
+import { type Project, type FilterCategory } from "@/lib/projects";
 
 const FILTERS = ["All", "Production", "Post", "Brand", "Event"] as const;
 type Filter = (typeof FILTERS)[number];
@@ -16,7 +16,7 @@ function matchesFilter(project: Project, filter: Filter) {
   return project.filterCategory === (filter as FilterCategory);
 }
 
-export default function WorkPageClient() {
+export default function WorkPageClient({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<Filter>("All");
 
   return (
@@ -45,14 +45,19 @@ export default function WorkPageClient() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          <AnimatePresence mode="popLayout">
-            {PROJECTS.filter((p) => matchesFilter(p, filter)).map((p) => (
-              <motion.div
-                key={p.slug}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+        {projects.length === 0 ? (
+          <p className="font-[family-name:var(--font-body)] text-[var(--color-text-dim)] text-[16px]">
+            New work is on its way — check back shortly.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <AnimatePresence mode="popLayout">
+              {projects.filter((p) => matchesFilter(p, filter)).map((p) => (
+                <motion.div
+                  key={p.slug}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               >
@@ -100,8 +105,9 @@ export default function WorkPageClient() {
                 </Link>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </div>
+            </AnimatePresence>
+          </div>
+        )}
 
         <div className="mt-24 md:mt-32 flex flex-col items-center text-center gap-6">
           <h2 className="font-[family-name:var(--font-display)] text-[24px] sm:text-[30px]">

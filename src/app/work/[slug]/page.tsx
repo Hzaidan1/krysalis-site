@@ -10,7 +10,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) {
     return { title: "Project Not Found | Krysalis Media" };
   }
@@ -26,7 +26,7 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return (
@@ -41,7 +41,7 @@ export default async function ProjectPage({
     );
   }
 
-  const nextProject = getNextProject(slug);
+  const nextProject = await getNextProject(slug);
 
   return (
     <main className="min-h-screen overflow-x-hidden">

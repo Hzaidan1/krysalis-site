@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getAllProjects } from "@/lib/projects";
 import WorkPageClient from "./WorkPageClient";
 
 export const metadata: Metadata = {
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Original productions, commissioned work, brand collaborations and post-production — with our role clearly defined on every project.",
 };
 
-export default function WorkPage() {
-  return <WorkPageClient />;
+export default async function WorkPage() {
+  const projects = await getAllProjects();
+  return <WorkPageClient projects={projects} />;
 }

@@ -2,21 +2,16 @@ export type FilterCategory = "Production" | "Post" | "Brand" | "Event";
 
 export type Project = {
   slug: string;
-  /** Client / collaborator name. "[Client]" until a real name is confirmed
-   * — never invent one, even one that sounds plausible. */
+  /** Client / collaborator name. */
   client: string;
-  /** Project name. "[Project Name]" until confirmed. */
+  /** Project name. */
   title: string;
-  /** Short "Service — Deliverable" tag, e.g. "Brand Content — Product Film".
-   * "[Service — Deliverable]" until confirmed. */
+  /** Short "Service — Deliverable" tag, e.g. "Brand Content — Product Film". */
   serviceDeliverable: string;
-  /** Drives the ALL / PRODUCTION / POST / BRAND / EVENT filter on /work.
-   * This is a structural/taxonomic guess based on the footage itself, not a
-   * claim about the client — kept functional rather than bracketed so the
-   * filter actually works, but still a best guess pending confirmation. */
+  /** Drives the ALL / PRODUCTION / POST / BRAND / EVENT filter on /work. */
   filterCategory: FilterCategory;
   /** Display category for the "[CATEGORY] / [YEAR]" header tag on the
-   * detail page, e.g. "Field Film". Same caveat as filterCategory. */
+   * detail page, e.g. "Field Film". */
   category: string;
   year: string;
   location?: string;
@@ -40,68 +35,7 @@ export type Project = {
   fullVideo?: string;
 };
 
-// Video 1-4 map to these four slots in upload order. None of the four have
-// confirmed real client/project identities yet — per instruction, nothing
-// here is invented (no "Operation First Light"-style placeholder-that-reads-
-// as-real). Everything that would assert a specific client, project name or
-// exact deliverable stays literally bracketed until the real mapping is
-// supplied. filterCategory/category are the one exception: they're a
-// structural best guess from the footage itself (needed for the /work
-// filter to function), not a claim about who the client is.
-export const PROJECTS: Project[] = [
-  {
-    slug: "project-01",
-    client: "[Client]",
-    title: "[Project Name]",
-    serviceDeliverable: "[Service — Deliverable]",
-    filterCategory: "Production",
-    category: "Field Film",
-    year: "2026",
-    previewVideo: "/videos/work/video-1-preview.mp4",
-    fullVideo: "/videos/work/video-1-full.mp4",
-  },
-  {
-    slug: "project-02",
-    client: "[Client]",
-    title: "[Project Name]",
-    serviceDeliverable: "[Service — Deliverable]",
-    filterCategory: "Post",
-    category: "Brand Film",
-    year: "2026",
-    previewVideo: "/videos/work/video-2-preview.mp4",
-    fullVideo: "/videos/work/video-2-full.mp4",
-  },
-  {
-    slug: "project-03",
-    client: "[Client]",
-    title: "[Project Name]",
-    serviceDeliverable: "[Service — Deliverable]",
-    filterCategory: "Production",
-    category: "Field Film",
-    year: "2026",
-    previewVideo: "/videos/work/video-3-preview.mp4",
-    fullVideo: "/videos/work/video-3-full.mp4",
-  },
-  {
-    slug: "project-04",
-    client: "[Client]",
-    title: "[Project Name]",
-    serviceDeliverable: "[Service — Deliverable]",
-    filterCategory: "Event",
-    category: "Event Coverage",
-    year: "2025",
-    previewVideo: "/videos/work/video-4-preview.mp4",
-    fullVideo: "/videos/work/video-4-full.mp4",
-  },
-];
-
-export function getProjectBySlug(slug: string): Project | undefined {
-  return PROJECTS.find((p) => p.slug === slug);
-}
-
-/** Returns the next project in sequence, wrapping around to the first. */
-export function getNextProject(slug: string): Project | undefined {
-  const i = PROJECTS.findIndex((p) => p.slug === slug);
-  if (i === -1) return undefined;
-  return PROJECTS[(i + 1) % PROJECTS.length];
-}
+// Data now lives in Sanity (see /studio) rather than hardcoded here — these
+// re-exports keep the existing import path (@/lib/projects) working for
+// every page that reads project data, so nothing else needs to change.
+export { getAllProjects, getProjectBySlug, getNextProject } from "@/sanity/client";
