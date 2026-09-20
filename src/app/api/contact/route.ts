@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Krysalis Website <onboarding@resend.dev>", // swap once domain is verified in Resend
+        from: "Krysalis Media <admin@krysalismedia.co.uk>",
         to: [toEmail],
         reply_to: data.email,
         subject: `New project enquiry from ${data.name}`,
