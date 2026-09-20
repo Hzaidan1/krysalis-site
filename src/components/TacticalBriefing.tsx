@@ -8,7 +8,7 @@ import type { Project } from "@/lib/projects";
 // Everything types, but fast — the old pace (42ms/char, 380ms between
 // lines) made a full case study take 20+ seconds. This keeps the typed
 // feel for the whole sequence while finishing in roughly 5-7 seconds.
-const CHAR_INTERVAL_MS = 10;
+const CHAR_INTERVAL_MS = 16;
 const LINE_PAUSE_MS = 90;
 const SFX_ACTIVE_MS = 3500; // keyboard clicks play for roughly this long from the start
 const SFX_FADE_MS = 300; // then fade out and stay silent for the rest (safety cap for unusually long content)

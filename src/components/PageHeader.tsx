@@ -55,7 +55,7 @@ export default function PageHeader({
         <p className="font-[family-name:var(--font-tactical-mono)] tracking-[0.3em] uppercase text-[var(--color-earth-light)] text-xs sm:text-sm mb-4">
           {kicker}
         </p>
-        <h1 className="font-[family-name:var(--font-display)] uppercase tracking-wide font-bold text-[28px] sm:text-[38px] lg:text-[48px] leading-[1.1] mb-6">
+        <h1 className="max-w-4xl font-[family-name:var(--font-display)] uppercase tracking-wide font-bold text-[28px] sm:text-[38px] lg:text-[48px] leading-[1.1] mb-6">
           {title}
         </h1>
         {subtitle && (

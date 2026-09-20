@@ -26,6 +26,8 @@ const labelClass =
 const inputClass =
   "w-full bg-[var(--color-bg-elevated)]/70 border border-[rgba(212,184,150,0.3)] rounded-sm px-5 py-4 outline-none font-[family-name:var(--font-body)] text-[17px] md:text-[18px] placeholder:text-[var(--color-text-dim)]/40 transition-all duration-300 focus:border-[var(--color-earth-light)] focus:bg-[var(--color-bg-elevated)]/90 focus:shadow-[0_0_0_1px_rgba(212,184,150,0.3),0_0_28px_rgba(212,184,150,0.16)]";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const fieldContainerVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
@@ -81,15 +83,22 @@ export default function ContactClient() {
 
   function stepValid(): boolean {
     if (step === 0) return data.name.trim() !== "" && data.org.trim() !== "";
-    if (step === 1) return data.email.trim() !== "" && data.projectType !== "";
+    if (step === 1) return EMAIL_PATTERN.test(data.email.trim()) && data.projectType !== "";
     if (step === 2) return data.description.trim() !== "";
     if (step === 3) return data.timeframe.trim() !== "";
     return true;
   }
 
+  function stepError(): string {
+    if (step === 1 && data.email.trim() !== "" && !EMAIL_PATTERN.test(data.email.trim())) {
+      return "Please enter a valid email address before continuing.";
+    }
+    return "Please fill this in before continuing.";
+  }
+
   function next() {
     if (!stepValid()) {
-      setError("Please fill this in before continuing.");
+      setError(stepError());
       return;
     }
     setError("");
