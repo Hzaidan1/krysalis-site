@@ -2,7 +2,7 @@
 
 **UK tactical media and production studio — website and CMS.**
 
-Live site: [krysalismedia.co.uk](https://krysalismedia.co.uk)
+Live site: [krysalismedia.co.uk](https://krysalismedia.co.uk) · [krysalismedia.com](https://krysalismedia.com)
 
 A full production Next.js application built end-to-end: information architecture, custom animation work, a headless CMS integration, a tested contact pipeline, and full production email infrastructure.
 
