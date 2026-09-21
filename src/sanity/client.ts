@@ -1,5 +1,6 @@
 import { createClient, type SanityClient } from "@sanity/client";
 import type { FilterCategory, Project } from "@/lib/projects";
+import { nextIndexInSequence } from "@/lib/sequence";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
@@ -67,7 +68,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | undefine
 
 export async function getNextProject(slug: string): Promise<Project | undefined> {
   const all = await getAllProjects();
-  const i = all.findIndex((p) => p.slug === slug);
-  if (i === -1) return undefined;
-  return all[(i + 1) % all.length];
+  const slugs = all.map((p) => p.slug);
+  const nextIndex = nextIndexInSequence(slug, slugs);
+  return nextIndex === -1 ? undefined : all[nextIndex];
 }

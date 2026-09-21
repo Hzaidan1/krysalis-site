@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import ReactiveBackground from "@/components/ReactiveBackground";
+import { isValidEmail } from "@/lib/validateEmail";
 
 const PROJECT_TYPES = [
   "Full Production",
@@ -25,8 +26,6 @@ const labelClass =
   "block font-[family-name:var(--font-tactical-mono)] text-xs md:text-[13px] uppercase tracking-[0.18em] text-[var(--color-text-dim)] mb-3 transition-colors duration-300 group-focus-within:text-[var(--color-earth-light)]";
 const inputClass =
   "w-full bg-[var(--color-bg-elevated)]/70 border border-[rgba(212,184,150,0.3)] rounded-sm px-5 py-4 outline-none font-[family-name:var(--font-body)] text-[17px] md:text-[18px] placeholder:text-[var(--color-text-dim)]/40 transition-all duration-300 focus:border-[var(--color-earth-light)] focus:bg-[var(--color-bg-elevated)]/90 focus:shadow-[0_0_0_1px_rgba(212,184,150,0.3),0_0_28px_rgba(212,184,150,0.16)]";
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldContainerVariants = {
   hidden: {},
@@ -83,14 +82,14 @@ export default function ContactClient() {
 
   function stepValid(): boolean {
     if (step === 0) return data.name.trim() !== "" && data.org.trim() !== "";
-    if (step === 1) return EMAIL_PATTERN.test(data.email.trim()) && data.projectType !== "";
+    if (step === 1) return isValidEmail(data.email) && data.projectType !== "";
     if (step === 2) return data.description.trim() !== "";
     if (step === 3) return data.timeframe.trim() !== "";
     return true;
   }
 
   function stepError(): string {
-    if (step === 1 && data.email.trim() !== "" && !EMAIL_PATTERN.test(data.email.trim())) {
+    if (step === 1 && data.email.trim() !== "" && !isValidEmail(data.email)) {
       return "Please enter a valid email address before continuing.";
     }
     return "Please fill this in before continuing.";

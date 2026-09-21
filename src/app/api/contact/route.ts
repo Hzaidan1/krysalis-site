@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isValidEmail } from "@/lib/validateEmail";
 
 // Sends contact form submissions to CONTACT_TO_EMAIL using the Resend API.
 // Requires RESEND_API_KEY (and ideally a verified sending domain) set as
@@ -27,8 +28,7 @@ export async function POST(req: NextRequest) {
     // other field — the client's type="email" input gives basic browser
     // validation, but that's bypassable (disabled JS, a bot posting
     // directly to this endpoint), so it needs its own real check here too.
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(String(data.email).trim())) {
+    if (!isValidEmail(String(data.email))) {
       return NextResponse.json(
         { ok: false, error: "Invalid email address" },
         { status: 400 }
