@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Krysalis Media
+
+**UK tactical media and production studio — website and CMS.**
+
+Live site: [krysalismedia.co.uk](https://krysalismedia.co.uk)
+
+A full production Next.js application built end-to-end: information architecture, custom animation work, a headless CMS integration, a tested contact pipeline, and full production email infrastructure.
+
+## Stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS** — custom site-wide responsive type and spacing system
+- **Sanity** — headless CMS with server-side revalidation, so content editors publish new work without a redeploy
+- **Resend** — transactional email for the contact form, with server-side validation
+- **Jest** — test suite covering core validation and navigation logic
+- **Vercel** — hosting and deployment
+
+## Highlights
+
+- Custom-built animated case-study pages for portfolio projects, with a typewriter-style reveal
+- A content-managed Work section — non-technical users can add, edit, and remove projects through a Sanity Studio instance embedded directly in the app (`/studio`), including video uploads
+- Server-side and client-side email validation with honest, specific error messages instead of a single generic failure state
+- Full custom domain email setup (SPF, DKIM, MX) for the associated business domain
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm test
+```
