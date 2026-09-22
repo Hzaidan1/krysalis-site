@@ -147,37 +147,44 @@ export default function TacticalBriefing({
     const list: Entry[] = [
       { kind: "tag", text: `${project.category} / ${project.year}` },
       { kind: "title", text: `${project.title} \u2014 ${project.client}` },
-      { kind: "heading", text: "The Brief" },
-      {
-        kind: "prose",
-        text: project.brief ?? "[The objective \u2014 2-3 sentences once supplied.]",
-      },
-      { kind: "heading", text: "Our Role" },
-      {
-        kind: "prose",
-        text:
-          project.role ??
-          "[Specific deliverables \u2014 e.g. Concept Development / Direction / Filming / Editing]",
-      },
-      { kind: "heading", text: "The Approach" },
-      {
-        kind: "prose",
-        text: project.approach ?? "[Creative direction, pacing and visual decisions \u2014 once supplied.]",
-      },
-      { kind: "heading", text: "Deliverables" },
     ];
 
-    const deliverables = project.deliverables ?? ["[Deliverables list \u2014 once supplied.]"];
-    for (const d of deliverables) {
-      list.push({ kind: "listItem", text: `\u2014 ${d}` });
+    if (project.brief) {
+      list.push(
+        { kind: "heading", text: "The Brief" },
+        { kind: "prose", text: project.brief }
+      );
+    }
+
+    if (project.role) {
+      list.push(
+        { kind: "heading", text: "Our Role" },
+        { kind: "prose", text: project.role }
+      );
+    }
+
+    if (project.approach) {
+      list.push(
+        { kind: "heading", text: "The Approach" },
+        { kind: "prose", text: project.approach }
+      );
+    }
+
+    if (project.deliverables && project.deliverables.length > 0) {
+      list.push({ kind: "heading", text: "Deliverables" });
+      for (const d of project.deliverables) {
+        list.push({ kind: "listItem", text: `\u2014 ${d}` });
+      }
+    }
+
+    if (project.credits) {
+      list.push(
+        { kind: "heading", text: "Credits" },
+        { kind: "credits", text: project.credits }
+      );
     }
 
     list.push(
-      { kind: "heading", text: "Credits" },
-      {
-        kind: "credits",
-        text: project.credits ?? "[Verified credits \u2014 once supplied.]",
-      },
       { kind: "link", text: "Next Project \u2192", href: nextHref ?? "/work" },
       { kind: "link", text: "Start a Project \u2192", href: "/contact" }
     );
